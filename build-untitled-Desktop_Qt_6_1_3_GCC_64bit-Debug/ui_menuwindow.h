@@ -68,13 +68,13 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         frame = new QFrame(centralwidget);
         frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setGeometry(QRect(140, 70, 191, 181));
+        frame->setGeometry(QRect(140, 70, 181, 181));
         frame->setStyleSheet(QString::fromUtf8("background: white;"));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         layoutWidget = new QWidget(frame);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 10, 171, 161));
+        layoutWidget->setGeometry(QRect(10, 10, 161, 161));
         verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -93,13 +93,13 @@ public:
 
         frame_2 = new QFrame(centralwidget);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
-        frame_2->setGeometry(QRect(470, 70, 191, 181));
+        frame_2->setGeometry(QRect(470, 70, 181, 181));
         frame_2->setStyleSheet(QString::fromUtf8("background: white;"));
         frame_2->setFrameShape(QFrame::StyledPanel);
         frame_2->setFrameShadow(QFrame::Raised);
         layoutWidget1 = new QWidget(frame_2);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(10, 10, 171, 161));
+        layoutWidget1->setGeometry(QRect(10, 10, 161, 161));
         verticalLayout_4 = new QVBoxLayout(layoutWidget1);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -118,13 +118,13 @@ public:
 
         frame_3 = new QFrame(centralwidget);
         frame_3->setObjectName(QString::fromUtf8("frame_3"));
-        frame_3->setGeometry(QRect(140, 290, 191, 181));
+        frame_3->setGeometry(QRect(140, 290, 181, 181));
         frame_3->setStyleSheet(QString::fromUtf8("background: white;"));
         frame_3->setFrameShape(QFrame::StyledPanel);
         frame_3->setFrameShadow(QFrame::Raised);
         layoutWidget2 = new QWidget(frame_3);
         layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(10, 10, 171, 158));
+        layoutWidget2->setGeometry(QRect(10, 10, 161, 158));
         verticalLayout = new QVBoxLayout(layoutWidget2);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -143,13 +143,13 @@ public:
 
         frame_4 = new QFrame(centralwidget);
         frame_4->setObjectName(QString::fromUtf8("frame_4"));
-        frame_4->setGeometry(QRect(470, 290, 191, 181));
+        frame_4->setGeometry(QRect(470, 290, 181, 181));
         frame_4->setStyleSheet(QString::fromUtf8("background: white;"));
         frame_4->setFrameShape(QFrame::StyledPanel);
         frame_4->setFrameShadow(QFrame::Raised);
         layoutWidget_2 = new QWidget(frame_4);
         layoutWidget_2->setObjectName(QString::fromUtf8("layoutWidget_2"));
-        layoutWidget_2->setGeometry(QRect(10, 10, 171, 157));
+        layoutWidget_2->setGeometry(QRect(10, 10, 161, 157));
         verticalLayout_3 = new QVBoxLayout(layoutWidget_2);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);

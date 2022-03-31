@@ -12,13 +12,16 @@ SOURCES += \
     admin.cpp \
     autentificationwindow.cpp \
     edge.cpp \
+    edgeforlist.cpp \
     graphwidget.cpp \
     graphwindow.cpp \
     hashtablewindow.cpp \
+    listwidget.cpp \
     listwindow.cpp \
     main.cpp \
     menuwindow.cpp \
     node.cpp \
+    nodeforlist.cpp \
     registrationwindow.cpp \
     sortwindow2.cpp
 
@@ -26,12 +29,15 @@ HEADERS += \
     admin.h \
     autentificationwindow.h \
     edge.h \
+    edgeforlist.h \
     graphwidget.h \
     graphwindow.h \
     hashtablewindow.h \
+    listwidget.h \
     listwindow.h \
     menuwindow.h \
     node.h \
+    nodeforlist.h \
     registrationwindow.h \
     sortwindow2.h
 

@@ -280,9 +280,21 @@ void SortWindow2::on_pushButton_19_clicked()
     QString text = ui->lineEdit->text();
     QStringList list = text.split(",");
     for (int i = 0; i < n; i++) {
-        buttonList[i]->setText(list[i]);
-        buttonList[i]->setFixedHeight(buttonList[i]->text().toInt() * 10);
-        buttonList[i]->setFixedWidth(40);
+        if (list.size() == 8) {
+            if (list[i].toInt() >= 2 && list[i].toInt() <= 20) {
+                buttonList[i]->setText(list[i]);
+                buttonList[i]->setFixedHeight(buttonList[i]->text().toInt() * 10);
+                buttonList[i]->setFixedWidth(40);
+            }
+            else {
+                QMessageBox::warning(this, tr("Ошибка"), tr("Диапозон значений должен быть [2,20]!"));//сообщение об ошибке
+                break;
+            }
+        }
+        else {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Количество значений должно<br> совпадать с количеством граф"));//сообщение об ошибке
+            break;
+        }
     }
 }
 
@@ -384,8 +396,8 @@ void SortWindow2::on_actionINSERTION_triggered()
 {
     QMessageBox::about(this, tr("INSERTION SORT"), tr("<p><b>Сортировка вставками</b> – простой алгоритм сортировки,"
                                                       " преимущественно использующийся в учебном программировании."
-                                                      " К положительной стороне метода относится простота реализации,"
-                                                      " а также его эффективность на частично упорядоченных последовательностях,"
+                                                      " К положительной стороне метода относится <i>простота реализации</i>,"
+                                                      " а также его <i>эффективность</i> на частично упорядоченных последовательностях,"
                                                       " и/или состоящих из небольшого числа элементов. Тем не менее, высокая"
                                                       " вычислительная сложность не позволяет рекомендовать алгоритм в повсеместном использовании.</p>"
                                                       "<p>На каждом шаге алгоритма мы выбираем один из элементов входных данных"

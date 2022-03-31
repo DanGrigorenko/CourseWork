@@ -3,7 +3,7 @@
 #include <autentificationwindow.h>
 #include <QTime>
 #include "graphwidget.h"
-
+#include "listwidget.h"
 MenuWindow::MenuWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MenuWindow)
@@ -15,9 +15,6 @@ MenuWindow::~MenuWindow()
 {
     delete ui;
 }
-
-
-
 
 void MenuWindow::on_action_triggered()//при нажатии открывается окно авторизации
 {
@@ -40,7 +37,9 @@ void MenuWindow::on_pushButton_2_clicked()
 
 void MenuWindow::on_pushButton_3_clicked()
 {
+    ListWidget *widget = new ListWidget;
     list = new ListWindow(this);
+    list->setCentralWidget(widget);
     list->show();
     this->hide();
 }

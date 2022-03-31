@@ -26,8 +26,11 @@ GraphWidget::GraphWidget(QWidget *parent)
     le1->setPlaceholderText("Введите графу: '1,3'");
     scene->addWidget(le1);
 
-    Node_ON_Scene(nn);
+    for (int i = 0; i < 100000; i++) {
+        edge[i] = NULL;
+    }
 
+    Node_ON_Scene(nn);
 }
 
 void GraphWidget::keyPressEvent(QKeyEvent *event)
