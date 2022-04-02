@@ -5,6 +5,7 @@
 #include <QGraphicsView>
 #include <QLineEdit>
 #include <QList>
+#include <QPushButton>
 
 class NodeForList;
 class EdgeForList;
@@ -30,6 +31,11 @@ protected:
 
 private:
     int nn = 3;
+    QPushButton* InsertButton = new QPushButton();
+    QPushButton* RemoveButton = new QPushButton();
+    QPushButton* SearchButton = new QPushButton();
+    QPushButton* CreatButton = new QPushButton();
     QGraphicsTextItem * field;
+
 };
 #endif // LISTWIDGET_H

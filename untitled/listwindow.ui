@@ -52,16 +52,6 @@
     <string>Вернуться</string>
    </property>
   </action>
-  <action name="action_2">
-   <property name="text">
-    <string>о программе</string>
-   </property>
-  </action>
-  <action name="action_3">
-   <property name="text">
-    <string>шщов</string>
-   </property>
-  </action>
  </widget>
  <resources>
   <include location="resource.qrc"/>

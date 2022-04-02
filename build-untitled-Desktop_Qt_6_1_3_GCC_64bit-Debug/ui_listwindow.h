@@ -24,8 +24,6 @@ class Ui_ListWindow
 {
 public:
     QAction *action;
-    QAction *action_2;
-    QAction *action_3;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -42,10 +40,6 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/IMG/1.png"), QSize(), QIcon::Normal, QIcon::Off);
         action->setIcon(icon);
-        action_2 = new QAction(ListWindow);
-        action_2->setObjectName(QString::fromUtf8("action_2"));
-        action_3 = new QAction(ListWindow);
-        action_3->setObjectName(QString::fromUtf8("action_3"));
         centralwidget = new QWidget(ListWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         ListWindow->setCentralWidget(centralwidget);
@@ -74,8 +68,6 @@ public:
 #if QT_CONFIG(tooltip)
         action->setToolTip(QCoreApplication::translate("ListWindow", "\320\222\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217", nullptr));
 #endif // QT_CONFIG(tooltip)
-        action_2->setText(QCoreApplication::translate("ListWindow", "\320\276 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\265", nullptr));
-        action_3->setText(QCoreApplication::translate("ListWindow", "\321\210\321\211\320\276\320\262", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("ListWindow", "toolBar", nullptr));
     } // retranslateUi
 

@@ -8,6 +8,7 @@
 #include <QRandomGenerator>
 #include <QPainter>
 #include <ctime>
+#include <QPushButton>
 
 ListWidget::ListWidget(QWidget *parent)
     : QGraphicsView(parent)
@@ -28,9 +29,32 @@ ListWidget::ListWidget(QWidget *parent)
         edge[i] = NULL;
     }
 
+    CreatButton->setGeometry(-415, 100, 150, 30);
+    CreatButton->setText("Создать");
+    CreatButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
+                                         "QPushButton:hover{background: black; border:none; color: white;}");
+    scene->addWidget(CreatButton);
+
+    SearchButton->setGeometry(-415, 130, 150, 30);
+    SearchButton->setText("Поиск");
+    SearchButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
+                                "QPushButton:hover{background: black; border:none; color: white;}");
+    scene->addWidget(SearchButton);
+
+    InsertButton->setGeometry(-415, 160, 150, 30);
+    InsertButton->setText("Вставка");
+    InsertButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
+                                "QPushButton:hover{background: black; border:none; color: white;}");
+    scene->addWidget(InsertButton);
+
+    RemoveButton->setGeometry(-415, 190, 150, 30);
+    RemoveButton->setText("Удаление");
+    RemoveButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
+                                "QPushButton:hover{background: black; border:none; color: white;}");
+    scene->addWidget(RemoveButton);
+
     Node_ON_Scene(nn);
 }
-
 void ListWidget::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
@@ -118,6 +142,7 @@ void ListWidget::zoomOut()
     }
     Node_ON_Scene(nn);
 }
+
 
 
 
