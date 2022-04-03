@@ -62,7 +62,7 @@ public:
         action = new QAction(MenuWindow);
         action->setObjectName(QString::fromUtf8("action"));
         QIcon icon;
-        icon.addFile(QString::fromUtf8(":/IMG/1.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8(":/IMG/pkL_aLB4L_I.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         action->setIcon(icon);
         centralwidget = new QWidget(MenuWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));

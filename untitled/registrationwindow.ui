@@ -108,7 +108,7 @@ color: white;</string>
   <action name="action">
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/IMG/1.png</normaloff>:/IMG/1.png</iconset>
+     <normaloff>:/IMG/pkL_aLB4L_I.jpg</normaloff>:/IMG/pkL_aLB4L_I.jpg</iconset>
    </property>
    <property name="text">
     <string>вернуться</string>

@@ -882,6 +882,8 @@ moc_autentificationwindow.cpp: ../untitled/autentificationwindow.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h \
 		../untitled/graphwindow.h \
 		../untitled/listwindow.h \
 		../untitled/hashtablewindow.h \
@@ -1446,6 +1448,20 @@ moc_listwidget.cpp: ../untitled/listwidget.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qlineedit.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextformat.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QPushButton \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qicon.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QLabel \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qpicture.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qvalidator.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qlocale.h \
 		moc_predefs.h \
 		../../../../QT/6.1.3/gcc_64/libexec/moc
 	/home/cigan/QT/6.1.3/gcc_64/libexec/moc $(DEFINES) --include /home/cigan/Workspace/QT2/проект/build-untitled-Desktop_Qt_6_1_3_GCC_64bit-Debug/moc_predefs.h -I/home/cigan/QT/6.1.3/gcc_64/mkspecs/linux-g++ -I/home/cigan/Workspace/QT2/проект/untitled -I/home/cigan/QT/6.1.3/gcc_64/include -I/home/cigan/QT/6.1.3/gcc_64/include/QtWidgets -I/home/cigan/QT/6.1.3/gcc_64/include/QtGui -I/home/cigan/QT/6.1.3/gcc_64/include/QtSql -I/home/cigan/QT/6.1.3/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../untitled/listwidget.h -o moc_listwidget.cpp
@@ -1725,6 +1741,8 @@ moc_menuwindow.cpp: ../untitled/menuwindow.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h \
 		../untitled/graphwindow.h \
 		../untitled/listwindow.h \
 		../untitled/hashtablewindow.h \
@@ -2015,6 +2033,8 @@ moc_sortwindow2.cpp: ../untitled/sortwindow2.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h \
 		moc_predefs.h \
 		../../../../QT/6.1.3/gcc_64/libexec/moc
 	/home/cigan/QT/6.1.3/gcc_64/libexec/moc $(DEFINES) --include /home/cigan/Workspace/QT2/проект/build-untitled-Desktop_Qt_6_1_3_GCC_64bit-Debug/moc_predefs.h -I/home/cigan/QT/6.1.3/gcc_64/mkspecs/linux-g++ -I/home/cigan/Workspace/QT2/проект/untitled -I/home/cigan/QT/6.1.3/gcc_64/include -I/home/cigan/QT/6.1.3/gcc_64/include/QtWidgets -I/home/cigan/QT/6.1.3/gcc_64/include/QtGui -I/home/cigan/QT/6.1.3/gcc_64/include/QtSql -I/home/cigan/QT/6.1.3/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../untitled/sortwindow2.h -o moc_sortwindow2.cpp
@@ -2266,6 +2286,8 @@ admin.o: ../untitled/admin.cpp ../untitled/admin.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h \
 		../untitled/graphwindow.h \
 		../untitled/listwindow.h \
 		../untitled/hashtablewindow.h
@@ -2423,6 +2445,8 @@ autentificationwindow.o: ../untitled/autentificationwindow.cpp ../untitled/auten
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h \
 		../untitled/graphwindow.h \
 		../untitled/listwindow.h \
 		../untitled/hashtablewindow.h \
@@ -3030,6 +3054,8 @@ graphwindow.o: ../untitled/graphwindow.cpp ../untitled/graphwindow.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h \
 		../untitled/listwindow.h \
 		../untitled/hashtablewindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphwindow.o ../untitled/graphwindow.cpp
@@ -3195,6 +3221,8 @@ hashtablewindow.o: ../untitled/hashtablewindow.cpp ../untitled/hashtablewindow.h
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h \
 		../untitled/graphwindow.h \
 		../untitled/listwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o hashtablewindow.o ../untitled/hashtablewindow.cpp
@@ -3338,18 +3366,37 @@ listwidget.o: ../untitled/listwidget.cpp ../untitled/listwidget.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qlineedit.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextformat.h \
-		../untitled/edge.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QPushButton \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qicon.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QLabel \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qpicture.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qvalidator.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qlocale.h \
+		../untitled/edgeforlist.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qpainterpath.h \
-		../untitled/node.h \
+		../untitled/nodeforlist.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QMessageBox \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qdialog.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/QKeyEvent \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/QRandomGenerator \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qrandom.h \
-		../../../../QT/6.1.3/gcc_64/include/QtGui/QPainter
+		../../../../QT/6.1.3/gcc_64/include/QtGui/QPainter \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/QTimer \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qtimer.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qbasictimer.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/QEventLoop \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qeventloop.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o listwidget.o ../untitled/listwidget.cpp
 
 listwindow.o: ../untitled/listwindow.cpp ../untitled/listwindow.h \
@@ -3513,6 +3560,8 @@ listwindow.o: ../untitled/listwindow.cpp ../untitled/listwindow.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h \
 		../untitled/graphwindow.h \
 		../untitled/hashtablewindow.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QComboBox \
@@ -3682,6 +3731,8 @@ main.o: ../untitled/main.cpp ../untitled/autentificationwindow.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h \
 		../untitled/graphwindow.h \
 		../untitled/listwindow.h \
 		../untitled/hashtablewindow.h \
@@ -3847,6 +3898,8 @@ menuwindow.o: ../untitled/menuwindow.cpp ../untitled/menuwindow.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h \
 		../untitled/graphwindow.h \
 		../untitled/listwindow.h \
 		../untitled/hashtablewindow.h \
@@ -3911,7 +3964,13 @@ menuwindow.o: ../untitled/menuwindow.cpp ../untitled/menuwindow.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QLineEdit \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qlineedit.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextformat.h
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextformat.h \
+		../untitled/listwidget.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qvalidator.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qregularexpression.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menuwindow.o ../untitled/menuwindow.cpp
 
 node.o: ../untitled/node.cpp ../untitled/edge.h \
@@ -4222,17 +4281,26 @@ nodeforlist.o: ../untitled/nodeforlist.cpp ../untitled/nodeforlist.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qlineedit.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextformat.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QPushButton \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qicon.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QLabel \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qpicture.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../QT/6.1.3/gcc_64/include/QtGui/qvalidator.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qlocale.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsScene \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicssceneevent.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/QPainter \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QStyleOption \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../../QT/6.1.3/gcc_64/include/QtCore/qlocale.h \
-		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../QT/6.1.3/gcc_64/include/QtGui/qvalidator.h \
-		../../../../QT/6.1.3/gcc_64/include/QtCore/qregularexpression.h \
-		../../../../QT/6.1.3/gcc_64/include/QtGui/qicon.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qslider.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractslider.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qstyle.h \
@@ -4424,6 +4492,8 @@ registrationwindow.o: ../untitled/registrationwindow.cpp ../untitled/registratio
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h \
 		../untitled/graphwindow.h \
 		../untitled/listwindow.h \
 		../untitled/hashtablewindow.h \
@@ -4579,6 +4649,8 @@ sortwindow2.o: ../untitled/sortwindow2.cpp ../untitled/sortwindow2.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsDropShadowEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h \
 		ui_sortwindow2.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/QVariant \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/QAction \

@@ -8,6 +8,7 @@
 
 #include <memory>
 #include "../untitled/listwidget.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -22,23 +23,34 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ListWidget_t {
-    const uint offsetsAndSize[12];
-    char stringdata0[43];
+    const uint offsetsAndSize[30];
+    char stringdata0[147];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_ListWidget_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_ListWidget_t qt_meta_stringdata_ListWidget = {
     {
 QT_MOC_LITERAL(0, 10), // "ListWidget"
-QT_MOC_LITERAL(11, 6), // "zoomIn"
-QT_MOC_LITERAL(18, 0), // ""
-QT_MOC_LITERAL(19, 7), // "zoomOut"
-QT_MOC_LITERAL(27, 13), // "Node_ON_Scene"
-QT_MOC_LITERAL(41, 1) // "n"
+QT_MOC_LITERAL(11, 10), // "timeChange"
+QT_MOC_LITERAL(22, 0), // ""
+QT_MOC_LITERAL(23, 4), // "time"
+QT_MOC_LITERAL(28, 13), // "Node_ON_Scene"
+QT_MOC_LITERAL(42, 1), // "n"
+QT_MOC_LITERAL(44, 9), // "CreateDiv"
+QT_MOC_LITERAL(54, 9), // "InsertDiv"
+QT_MOC_LITERAL(64, 9), // "SearchDiv"
+QT_MOC_LITERAL(74, 16), // "RandomFixSizeDiv"
+QT_MOC_LITERAL(91, 9), // "RemoveDiv"
+QT_MOC_LITERAL(101, 9), // "RandomDiv"
+QT_MOC_LITERAL(111, 15), // "RandomSortedDiv"
+QT_MOC_LITERAL(127, 7), // "MenuDiv"
+QT_MOC_LITERAL(135, 11) // "CreateGoDiv"
 
     },
-    "ListWidget\0zoomIn\0\0zoomOut\0Node_ON_Scene\0"
-    "n"
+    "ListWidget\0timeChange\0\0time\0Node_ON_Scene\0"
+    "n\0CreateDiv\0InsertDiv\0SearchDiv\0"
+    "RandomFixSizeDiv\0RemoveDiv\0RandomDiv\0"
+    "RandomSortedDiv\0MenuDiv\0CreateGoDiv"
 };
 #undef QT_MOC_LITERAL
 
@@ -48,7 +60,7 @@ static const uint qt_meta_data_ListWidget[] = {
        9,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -56,14 +68,30 @@ static const uint qt_meta_data_ListWidget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   32,    2, 0x0a,    0 /* Public */,
-       3,    0,   33,    2, 0x0a,    1 /* Public */,
-       4,    1,   34,    2, 0x0a,    2 /* Public */,
+       1,    1,   80,    2, 0x0a,    0 /* Public */,
+       4,    1,   83,    2, 0x0a,    2 /* Public */,
+       6,    0,   86,    2, 0x0a,    4 /* Public */,
+       7,    0,   87,    2, 0x0a,    5 /* Public */,
+       8,    0,   88,    2, 0x0a,    6 /* Public */,
+       9,    0,   89,    2, 0x0a,    7 /* Public */,
+      10,    0,   90,    2, 0x0a,    8 /* Public */,
+      11,    0,   91,    2, 0x0a,    9 /* Public */,
+      12,    0,   92,    2, 0x0a,   10 /* Public */,
+      13,    0,   93,    2, 0x0a,   11 /* Public */,
+      14,    0,   94,    2, 0x0a,   12 /* Public */,
 
  // slots: parameters
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void, QMetaType::Int,    5,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -74,9 +102,17 @@ void ListWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<ListWidget *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->zoomIn(); break;
-        case 1: _t->zoomOut(); break;
-        case 2: _t->Node_ON_Scene((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 0: _t->timeChange((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 1: _t->Node_ON_Scene((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 2: _t->CreateDiv(); break;
+        case 3: _t->InsertDiv(); break;
+        case 4: _t->SearchDiv(); break;
+        case 5: _t->RandomFixSizeDiv(); break;
+        case 6: _t->RemoveDiv(); break;
+        case 7: _t->RandomDiv(); break;
+        case 8: _t->RandomSortedDiv(); break;
+        case 9: _t->MenuDiv(); break;
+        case 10: _t->CreateGoDiv(); break;
         default: ;
         }
     }
@@ -90,7 +126,7 @@ const QMetaObject ListWidget::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_ListWidget_t
 
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -117,13 +153,13 @@ int ListWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 11)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 11;
     }
     return _id;
 }

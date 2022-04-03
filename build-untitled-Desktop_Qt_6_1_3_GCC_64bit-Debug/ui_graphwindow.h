@@ -43,7 +43,7 @@ public:
         action = new QAction(GraphWindow);
         action->setObjectName(QString::fromUtf8("action"));
         QIcon icon;
-        icon.addFile(QString::fromUtf8(":/IMG/1.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8(":/IMG/pkL_aLB4L_I.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         action->setIcon(icon);
         action_4 = new QAction(GraphWindow);
         action_4->setObjectName(QString::fromUtf8("action_4"));
