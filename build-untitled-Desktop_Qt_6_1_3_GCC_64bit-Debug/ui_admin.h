@@ -56,12 +56,12 @@ public:
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(260, 470, 121, 41));
-        pushButton->setStyleSheet(QString::fromUtf8("background: green;\n"
+        pushButton->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
 "color: white;"));
         pushButton_2 = new QPushButton(centralwidget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(420, 470, 121, 41));
-        pushButton_2->setStyleSheet(QString::fromUtf8("background: green;\n"
+        pushButton_2->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
 "color: white;"));
         Admin->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Admin);

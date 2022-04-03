@@ -58,7 +58,7 @@
       <item>
        <widget class="QPushButton" name="pushButton">
         <property name="styleSheet">
-         <string notr="true">background: green;
+         <string notr="true">background: #2300B0;
 color: white;</string>
         </property>
         <property name="text">
@@ -110,7 +110,7 @@ color: white;</string>
       <item>
        <widget class="QPushButton" name="pushButton_2">
         <property name="styleSheet">
-         <string notr="true">background: green;
+         <string notr="true">background: #2300B0;
 color: white;</string>
         </property>
         <property name="text">
@@ -162,7 +162,7 @@ color: white;</string>
       <item>
        <widget class="QPushButton" name="pushButton_3">
         <property name="styleSheet">
-         <string notr="true">background: green;
+         <string notr="true">background: #2300B0;
 color: white;</string>
         </property>
         <property name="text">
@@ -214,7 +214,7 @@ color: white;</string>
       <item>
        <widget class="QPushButton" name="pushButton_4">
         <property name="styleSheet">
-         <string notr="true">background: green;
+         <string notr="true">background: #2300B0;
 color: white;</string>
         </property>
         <property name="text">

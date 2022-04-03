@@ -30,22 +30,6 @@
      <string>TextLabel</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_19">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>390</y>
-      <width>71</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">  border: 1px solid green;</string>
-    </property>
-    <property name="text">
-     <string>Замена</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
@@ -55,42 +39,11 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"> font-style: italic;</string>
+    </property>
     <property name="text">
      <string>Кол-во перестоновок: 0</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_15">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>30</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"> border: 1px solid green;</string>
-    </property>
-    <property name="text">
-     <string> SHAKER
-SORT</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_16">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>30</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"> border: 1px solid green;</string>
-    </property>
-    <property name="text">
-     <string>INSERTION
-SORT</string>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -213,23 +166,6 @@ SORT</string>
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_14">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>30</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"> border: 1px solid green;</string>
-    </property>
-    <property name="text">
-     <string>SELECTION
-SORT</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
@@ -243,11 +179,59 @@ SORT</string>
      <string>TextLabel</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>440</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"> border: 1px solid #F1F2F2;
+color: grey;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>40</y>
+      <width>391</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_15">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>40</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"> border: 1px solid green;</string>
+    </property>
+    <property name="text">
+     <string> SHAKER
+SORT</string>
+    </property>
+   </widget>
    <widget class="QPushButton" name="pushButton_17">
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>30</y>
+      <y>40</y>
       <width>91</width>
       <height>41</height>
      </rect>
@@ -261,27 +245,58 @@ SORT</string>
 SORT</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QPushButton" name="pushButton_14">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>440</y>
-      <width>171</width>
-      <height>31</height>
+      <x>280</x>
+      <y>40</y>
+      <width>101</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true"> border: 1px solid green;</string>
     </property>
     <property name="text">
-     <string/>
+     <string>SELECTION
+SORT</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_16">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>40</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"> border: 1px solid green;</string>
+    </property>
+    <property name="text">
+     <string>INSERTION
+SORT</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>380</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_12">
     <property name="geometry">
      <rect>
       <x>270</x>
-      <y>390</y>
+      <y>380</y>
       <width>91</width>
       <height>41</height>
      </rect>
@@ -292,6 +307,22 @@ SORT</string>
     <property name="text">
      <string>Случайные
 числа</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_19">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>380</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">  border: 1px solid green;</string>
+    </property>
+    <property name="text">
+     <string>Замена</string>
     </property>
    </widget>
   </widget>

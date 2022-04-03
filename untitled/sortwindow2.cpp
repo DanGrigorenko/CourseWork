@@ -13,21 +13,32 @@ SortWindow2::SortWindow2(QWidget *parent) :
     ui->setupUi(this);
     srand(time(NULL));
 
+    effect->setBlurRadius(30);
+    effect->setColor("#BCBEC0");
+    ui->label_11->setGraphicsEffect(effect);
 
-    ui->pushButton_11->setStyleSheet("QPushButton{background: none; border: 1px solid green;}"
-                                     "QPushButton:hover{background: green; border:none; color: white;}");
-    ui->pushButton_12->setStyleSheet("QPushButton{background: none; border: 1px solid green;}"
-                                     "QPushButton:hover{background: green; border:none; color: white}");
-    ui->pushButton_14->setStyleSheet("QPushButton{background: none; border: 1px solid green;}"
-                                     "QPushButton:hover{background: green; border:none; color: white}");
-    ui->pushButton_15->setStyleSheet("QPushButton{background: none; border: 1px solid green;}"
-                                     "QPushButton:hover{background: green; border:none; color: white}");
-    ui->pushButton_16->setStyleSheet("QPushButton{background: none; border: 1px solid green;}"
-                                     "QPushButton:hover{background: green; border:none; color: white}");
-    ui->pushButton_17->setStyleSheet("QPushButton{background: none; border: 1px solid green;}"
-                                     "QPushButton:hover{background: green; border:none; color: white}");
-    ui->pushButton_19->setStyleSheet("QPushButton{background: none; border: 1px solid green;}"
-                                     "QPushButton:hover{background: green; border:none; color: white}");
+    effect2->setBlurRadius(30);
+    effect2->setColor("#BCBEC0");
+    ui->label_12->setGraphicsEffect(effect2);
+
+    ui->pushButton_11->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid green;}"
+                                     "QPushButton:hover{background: #ADD8E6; border:none; color: black;}");
+    effect3->setBlurRadius(30);
+    effect3->setColor("#BCBEC0");
+    ui->pushButton_11->setGraphicsEffect(effect3);
+    ui->pushButton_12->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid green;}"
+                                     "QPushButton:hover{background: #ADD8E6; border:none; color: black;}");
+    ui->pushButton_14->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid green;}"
+                                     "QPushButton:hover{background: #ADD8E6; border:none; color: black;}");
+    ui->pushButton_15->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid green;}"
+                                     "QPushButton:hover{background: #ADD8E6; border:none; color: black;}");
+    ui->pushButton_16->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid green;}"
+                                     "QPushButton:hover{background: #ADD8E6; border:none; color: black;}");
+    ui->pushButton_17->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid green;}"
+                                     "QPushButton:hover{background: #ADD8E6; border:none; color: black;}");
+    ui->pushButton_19->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid green;}"
+                                     "QPushButton:hover{background: #ADD8E6; border:none; color: black;}");
+
     buttonList[0] = ui->label;
     buttonList[1] = ui->label_2;
     buttonList[2] = ui->label_3;

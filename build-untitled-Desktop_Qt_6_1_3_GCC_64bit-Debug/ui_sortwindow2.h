@@ -36,10 +36,7 @@ public:
     QAction *action_3;
     QWidget *centralwidget;
     QLabel *label;
-    QPushButton *pushButton_19;
     QLabel *label_10;
-    QPushButton *pushButton_15;
-    QPushButton *pushButton_16;
     QFrame *line;
     QLabel *label_4;
     QLabel *label_7;
@@ -49,11 +46,16 @@ public:
     QLabel *label_8;
     QPushButton *pushButton_11;
     QLabel *label_9;
-    QPushButton *pushButton_14;
     QLabel *label_2;
-    QPushButton *pushButton_17;
     QLineEdit *lineEdit;
+    QLabel *label_11;
+    QPushButton *pushButton_15;
+    QPushButton *pushButton_17;
+    QPushButton *pushButton_14;
+    QPushButton *pushButton_16;
+    QLabel *label_12;
     QPushButton *pushButton_12;
+    QPushButton *pushButton_19;
     QMenuBar *menubar;
     QMenu *menu;
     QMenu *menu_2;
@@ -86,21 +88,10 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(190, 130, 41, 191));
-        pushButton_19 = new QPushButton(centralwidget);
-        pushButton_19->setObjectName(QString::fromUtf8("pushButton_19"));
-        pushButton_19->setGeometry(QRect(190, 390, 71, 41));
-        pushButton_19->setStyleSheet(QString::fromUtf8("  border: 1px solid green;"));
         label_10 = new QLabel(centralwidget);
         label_10->setObjectName(QString::fromUtf8("label_10"));
         label_10->setGeometry(QRect(400, 390, 221, 31));
-        pushButton_15 = new QPushButton(centralwidget);
-        pushButton_15->setObjectName(QString::fromUtf8("pushButton_15"));
-        pushButton_15->setGeometry(QRect(490, 30, 91, 41));
-        pushButton_15->setStyleSheet(QString::fromUtf8(" border: 1px solid green;"));
-        pushButton_16 = new QPushButton(centralwidget);
-        pushButton_16->setObjectName(QString::fromUtf8("pushButton_16"));
-        pushButton_16->setGeometry(QRect(390, 30, 91, 41));
-        pushButton_16->setStyleSheet(QString::fromUtf8(" border: 1px solid green;"));
+        label_10->setStyleSheet(QString::fromUtf8(" font-style: italic;"));
         line = new QFrame(centralwidget);
         line->setObjectName(QString::fromUtf8("line"));
         line->setGeometry(QRect(373, 390, 20, 81));
@@ -131,26 +122,46 @@ public:
         label_9 = new QLabel(centralwidget);
         label_9->setObjectName(QString::fromUtf8("label_9"));
         label_9->setGeometry(QRect(330, 340, 201, 31));
-        pushButton_14 = new QPushButton(centralwidget);
-        pushButton_14->setObjectName(QString::fromUtf8("pushButton_14"));
-        pushButton_14->setGeometry(QRect(290, 30, 91, 41));
-        pushButton_14->setStyleSheet(QString::fromUtf8(" border: 1px solid green;"));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(240, 130, 41, 191));
-        pushButton_17 = new QPushButton(centralwidget);
-        pushButton_17->setObjectName(QString::fromUtf8("pushButton_17"));
-        pushButton_17->setGeometry(QRect(190, 30, 91, 41));
-        pushButton_17->setStyleSheet(QString::fromUtf8("border: 1px solid green;\n"
-""));
         lineEdit = new QLineEdit(centralwidget);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
         lineEdit->setGeometry(QRect(190, 440, 171, 31));
-        lineEdit->setStyleSheet(QString::fromUtf8(" border: 1px solid green;"));
+        lineEdit->setStyleSheet(QString::fromUtf8(" border: 1px solid #F1F2F2;\n"
+"color: grey;\n"
+""));
+        label_11 = new QLabel(centralwidget);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+        label_11->setGeometry(QRect(190, 40, 391, 41));
+        pushButton_15 = new QPushButton(centralwidget);
+        pushButton_15->setObjectName(QString::fromUtf8("pushButton_15"));
+        pushButton_15->setGeometry(QRect(480, 40, 101, 41));
+        pushButton_15->setStyleSheet(QString::fromUtf8(" border: 1px solid green;"));
+        pushButton_17 = new QPushButton(centralwidget);
+        pushButton_17->setObjectName(QString::fromUtf8("pushButton_17"));
+        pushButton_17->setGeometry(QRect(190, 40, 91, 41));
+        pushButton_17->setStyleSheet(QString::fromUtf8("border: 1px solid green;\n"
+""));
+        pushButton_14 = new QPushButton(centralwidget);
+        pushButton_14->setObjectName(QString::fromUtf8("pushButton_14"));
+        pushButton_14->setGeometry(QRect(280, 40, 101, 41));
+        pushButton_14->setStyleSheet(QString::fromUtf8(" border: 1px solid green;"));
+        pushButton_16 = new QPushButton(centralwidget);
+        pushButton_16->setObjectName(QString::fromUtf8("pushButton_16"));
+        pushButton_16->setGeometry(QRect(380, 40, 101, 41));
+        pushButton_16->setStyleSheet(QString::fromUtf8(" border: 1px solid green;"));
+        label_12 = new QLabel(centralwidget);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+        label_12->setGeometry(QRect(190, 380, 171, 41));
         pushButton_12 = new QPushButton(centralwidget);
         pushButton_12->setObjectName(QString::fromUtf8("pushButton_12"));
-        pushButton_12->setGeometry(QRect(270, 390, 91, 41));
+        pushButton_12->setGeometry(QRect(270, 380, 91, 41));
         pushButton_12->setStyleSheet(QString::fromUtf8("  border: 1px solid green;"));
+        pushButton_19 = new QPushButton(centralwidget);
+        pushButton_19->setObjectName(QString::fromUtf8("pushButton_19"));
+        pushButton_19->setGeometry(QRect(190, 380, 81, 41));
+        pushButton_19->setStyleSheet(QString::fromUtf8("  border: 1px solid green;"));
         SortWindow2->setCentralWidget(centralwidget);
         menubar = new QMenuBar(SortWindow2);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -197,12 +208,7 @@ public:
 #endif // QT_CONFIG(tooltip)
         action_3->setText(QCoreApplication::translate("SortWindow2", "\320\230\321\201\320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\320\275\320\270\320\265", nullptr));
         label->setText(QCoreApplication::translate("SortWindow2", "TextLabel", nullptr));
-        pushButton_19->setText(QCoreApplication::translate("SortWindow2", "\320\227\320\260\320\274\320\265\320\275\320\260", nullptr));
         label_10->setText(QCoreApplication::translate("SortWindow2", "\320\232\320\276\320\273-\320\262\320\276 \320\277\320\265\321\200\320\265\321\201\321\202\320\276\320\275\320\276\320\262\320\276\320\272: 0", nullptr));
-        pushButton_15->setText(QCoreApplication::translate("SortWindow2", " SHAKER\n"
-"SORT", nullptr));
-        pushButton_16->setText(QCoreApplication::translate("SortWindow2", "INSERTION\n"
-"SORT", nullptr));
         label_4->setText(QCoreApplication::translate("SortWindow2", "TextLabel", nullptr));
         label_7->setText(QCoreApplication::translate("SortWindow2", "TextLabel", nullptr));
         label_5->setText(QCoreApplication::translate("SortWindow2", "TextLabel", nullptr));
@@ -211,14 +217,21 @@ public:
         label_8->setText(QCoreApplication::translate("SortWindow2", "TextLabel", nullptr));
         pushButton_11->setText(QCoreApplication::translate("SortWindow2", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
         label_9->setText(QString());
-        pushButton_14->setText(QCoreApplication::translate("SortWindow2", "SELECTION\n"
-"SORT", nullptr));
         label_2->setText(QCoreApplication::translate("SortWindow2", "TextLabel", nullptr));
+        lineEdit->setText(QString());
+        label_11->setText(QCoreApplication::translate("SortWindow2", "TextLabel", nullptr));
+        pushButton_15->setText(QCoreApplication::translate("SortWindow2", " SHAKER\n"
+"SORT", nullptr));
         pushButton_17->setText(QCoreApplication::translate("SortWindow2", "BUBBLE\n"
 "SORT", nullptr));
-        lineEdit->setText(QString());
+        pushButton_14->setText(QCoreApplication::translate("SortWindow2", "SELECTION\n"
+"SORT", nullptr));
+        pushButton_16->setText(QCoreApplication::translate("SortWindow2", "INSERTION\n"
+"SORT", nullptr));
+        label_12->setText(QCoreApplication::translate("SortWindow2", "TextLabel", nullptr));
         pushButton_12->setText(QCoreApplication::translate("SortWindow2", "\320\241\320\273\321\203\321\207\320\260\320\271\320\275\321\213\320\265\n"
 "\321\207\320\270\321\201\320\273\320\260", nullptr));
+        pushButton_19->setText(QCoreApplication::translate("SortWindow2", "\320\227\320\260\320\274\320\265\320\275\320\260", nullptr));
         menu->setTitle(QCoreApplication::translate("SortWindow2", "\320\241\320\277\321\200\320\260\320\262\320\272\320\260", nullptr));
         menu_2->setTitle(QCoreApplication::translate("SortWindow2", "\320\220\320\273\320\263\320\276\321\200\320\270\321\202\320\274\321\213", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("SortWindow2", "toolBar", nullptr));

@@ -56,12 +56,12 @@ public:
         pushButton = new QPushButton(groupBox_2);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(60, 240, 111, 31));
-        pushButton->setStyleSheet(QString::fromUtf8("background: green;\n"
+        pushButton->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
 "color: white;"));
         pushButton_2 = new QPushButton(groupBox_2);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(200, 240, 131, 31));
-        pushButton_2->setStyleSheet(QString::fromUtf8("background: green;\n"
+        pushButton_2->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
 "color: white;\n"
 ""));
         checkBox = new QCheckBox(groupBox_2);

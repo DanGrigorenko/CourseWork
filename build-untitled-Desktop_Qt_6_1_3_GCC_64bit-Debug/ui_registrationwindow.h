@@ -58,7 +58,7 @@ public:
         pushButton = new QPushButton(groupBox_2);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(60, 240, 271, 41));
-        pushButton->setStyleSheet(QString::fromUtf8("background: green;\n"
+        pushButton->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
 "color: white;"));
         lineEdit_3 = new QLineEdit(groupBox_2);
         lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));

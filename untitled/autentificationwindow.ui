@@ -62,7 +62,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background: green;
+      <string notr="true">background: #2300B0;
 color: white;</string>
      </property>
      <property name="text">
@@ -79,7 +79,7 @@ color: white;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background: green;
+      <string notr="true">background: #2300B0;
 color: white;
 </string>
      </property>

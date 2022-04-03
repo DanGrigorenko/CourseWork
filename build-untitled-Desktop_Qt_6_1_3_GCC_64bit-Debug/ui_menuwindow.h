@@ -86,7 +86,7 @@ public:
 
         pushButton = new QPushButton(layoutWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setStyleSheet(QString::fromUtf8("background: green;\n"
+        pushButton->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
 "color: white;"));
 
         verticalLayout_2->addWidget(pushButton);
@@ -111,7 +111,7 @@ public:
 
         pushButton_2 = new QPushButton(layoutWidget1);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setStyleSheet(QString::fromUtf8("background: green;\n"
+        pushButton_2->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
 "color: white;"));
 
         verticalLayout_4->addWidget(pushButton_2);
@@ -136,7 +136,7 @@ public:
 
         pushButton_3 = new QPushButton(layoutWidget2);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setStyleSheet(QString::fromUtf8("background: green;\n"
+        pushButton_3->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
 "color: white;"));
 
         verticalLayout->addWidget(pushButton_3);
@@ -161,7 +161,7 @@ public:
 
         pushButton_4 = new QPushButton(layoutWidget_2);
         pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-        pushButton_4->setStyleSheet(QString::fromUtf8("background: green;\n"
+        pushButton_4->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
 "color: white;"));
 
         verticalLayout_3->addWidget(pushButton_4);

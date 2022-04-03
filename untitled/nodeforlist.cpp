@@ -60,17 +60,15 @@ void NodeForList::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
         gradient.setCenter(3, 3);
         gradient.setFocalPoint(3, 3);
 
-        gradient.setColorAt(0, Qt::yellow);
-        gradient.setColorAt(1, Qt::darkYellow);
+        gradient.setColorAt(1, Qt::white);
     } else {
-        gradient.setColorAt(0, Qt::yellow);
-        gradient.setColorAt(1, Qt::darkYellow);
+        gradient.setColorAt(1, Qt::white);
     }
 
 
     painter->setBrush(gradient);
 
-    painter->setPen(QPen(Qt::black, 0));
+    painter->setPen(QPen(Qt::black, 3));
     painter->drawEllipse(-10, -10, 20, 20);
     painter->drawText(QPointF(-4,4),QString::number(m_node_id));
 }

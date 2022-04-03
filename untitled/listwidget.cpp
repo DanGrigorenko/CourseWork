@@ -1,5 +1,4 @@
 #include "listwidget.h"
-
 #include "edgeforlist.h"
 #include "nodeforlist.h"
 #include <QMessageBox>
@@ -9,6 +8,7 @@
 #include <QPainter>
 #include <ctime>
 #include <QPushButton>
+#include <QLabel>
 
 ListWidget::ListWidget(QWidget *parent)
     : QGraphicsView(parent)
