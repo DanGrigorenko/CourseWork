@@ -30,17 +30,14 @@ public:
     QAction *action;
     QWidget *centralwidget;
     QFrame *frame;
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout_2;
     QLabel *label_2;
-    QPushButton *pushButton;
     QFrame *frame_2;
-    QWidget *layoutWidget1;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_4;
     QLabel *label_3;
     QPushButton *pushButton_2;
     QFrame *frame_3;
-    QWidget *layoutWidget2;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QLabel *label_4;
     QPushButton *pushButton_3;
@@ -49,6 +46,13 @@ public:
     QVBoxLayout *verticalLayout_3;
     QLabel *label_5;
     QPushButton *pushButton_4;
+    QFrame *frame_5;
+    QWidget *layoutWidget2;
+    QVBoxLayout *verticalLayout_5;
+    QLabel *label_6;
+    QPushButton *pushButton;
+    QWidget *layoutWidget3;
+    QVBoxLayout *verticalLayout_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
     QToolBar *toolBar;
@@ -72,44 +76,29 @@ public:
         frame->setStyleSheet(QString::fromUtf8("background: white;"));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
-        layoutWidget = new QWidget(frame);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 10, 161, 161));
-        verticalLayout_2 = new QVBoxLayout(layoutWidget);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        label_2 = new QLabel(layoutWidget);
+        label_2 = new QLabel(frame);
         label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(0, 0, 166, 148));
         label_2->setPixmap(QPixmap(QString::fromUtf8(":/IMG/sorting2.gif")));
-
-        verticalLayout_2->addWidget(label_2);
-
-        pushButton = new QPushButton(layoutWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
-"color: white;"));
-
-        verticalLayout_2->addWidget(pushButton);
-
         frame_2 = new QFrame(centralwidget);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
         frame_2->setGeometry(QRect(470, 70, 181, 181));
         frame_2->setStyleSheet(QString::fromUtf8("background: white;"));
         frame_2->setFrameShape(QFrame::StyledPanel);
         frame_2->setFrameShadow(QFrame::Raised);
-        layoutWidget1 = new QWidget(frame_2);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(10, 10, 161, 161));
-        verticalLayout_4 = new QVBoxLayout(layoutWidget1);
+        layoutWidget = new QWidget(frame_2);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 10, 161, 161));
+        verticalLayout_4 = new QVBoxLayout(layoutWidget);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        label_3 = new QLabel(layoutWidget1);
+        label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setPixmap(QPixmap(QString::fromUtf8(":/IMG/graph.gif")));
 
         verticalLayout_4->addWidget(label_3);
 
-        pushButton_2 = new QPushButton(layoutWidget1);
+        pushButton_2 = new QPushButton(layoutWidget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
 "color: white;"));
@@ -122,19 +111,19 @@ public:
         frame_3->setStyleSheet(QString::fromUtf8("background: white;"));
         frame_3->setFrameShape(QFrame::StyledPanel);
         frame_3->setFrameShadow(QFrame::Raised);
-        layoutWidget2 = new QWidget(frame_3);
-        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(10, 10, 161, 158));
-        verticalLayout = new QVBoxLayout(layoutWidget2);
+        layoutWidget1 = new QWidget(frame_3);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(10, 10, 161, 158));
+        verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label_4 = new QLabel(layoutWidget2);
+        label_4 = new QLabel(layoutWidget1);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setPixmap(QPixmap(QString::fromUtf8(":/IMG/list.gif")));
 
         verticalLayout->addWidget(label_4);
 
-        pushButton_3 = new QPushButton(layoutWidget2);
+        pushButton_3 = new QPushButton(layoutWidget1);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
         pushButton_3->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
 "color: white;"));
@@ -166,6 +155,37 @@ public:
 
         verticalLayout_3->addWidget(pushButton_4);
 
+        frame_5 = new QFrame(centralwidget);
+        frame_5->setObjectName(QString::fromUtf8("frame_5"));
+        frame_5->setGeometry(QRect(140, 70, 181, 181));
+        frame_5->setStyleSheet(QString::fromUtf8("background: white;"));
+        frame_5->setFrameShape(QFrame::StyledPanel);
+        frame_5->setFrameShadow(QFrame::Raised);
+        layoutWidget2 = new QWidget(frame_5);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(10, 10, 161, 161));
+        verticalLayout_5 = new QVBoxLayout(layoutWidget2);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        verticalLayout_5->setContentsMargins(0, 0, 0, 0);
+        label_6 = new QLabel(layoutWidget2);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setPixmap(QPixmap(QString::fromUtf8(":/IMG/sorting2.gif")));
+
+        verticalLayout_5->addWidget(label_6);
+
+        pushButton = new QPushButton(layoutWidget2);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setStyleSheet(QString::fromUtf8("background: #2300B0;\n"
+"color: white;"));
+
+        verticalLayout_5->addWidget(pushButton);
+
+        layoutWidget3 = new QWidget(centralwidget);
+        layoutWidget3->setObjectName(QString::fromUtf8("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(0, 0, 2, 2));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget3);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         MenuWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MenuWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -190,13 +210,14 @@ public:
         MenuWindow->setWindowTitle(QCoreApplication::translate("MenuWindow", "MainWindow", nullptr));
         action->setText(QCoreApplication::translate("MenuWindow", "\320\262\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217", nullptr));
         label_2->setText(QString());
-        pushButton->setText(QCoreApplication::translate("MenuWindow", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260", nullptr));
         label_3->setText(QString());
         pushButton_2->setText(QCoreApplication::translate("MenuWindow", "\320\223\321\200\320\260\321\204\321\213", nullptr));
         label_4->setText(QString());
         pushButton_3->setText(QCoreApplication::translate("MenuWindow", "\320\241\320\262\321\217\320\267\320\260\320\275\320\275\321\213\320\271 \321\201\320\277\320\270\321\201\320\276\320\272", nullptr));
         label_5->setText(QString());
         pushButton_4->setText(QCoreApplication::translate("MenuWindow", "\320\245\320\265\321\210-\321\202\320\260\320\261\320\273\320\270\321\206\320\260", nullptr));
+        label_6->setText(QString());
+        pushButton->setText(QCoreApplication::translate("MenuWindow", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MenuWindow", "toolBar", nullptr));
     } // retranslateUi
 

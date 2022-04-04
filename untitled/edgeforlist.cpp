@@ -28,13 +28,13 @@ void EdgeForList::adjust()
     if (!source || !dest)
         return;
 
-    QLineF line(mapFromItem(source, 0, 0), mapFromItem(dest, 0, 0));
+    QLineF line(mapFromItem(source, -3, -3), mapFromItem(dest, -3, -3));
     qreal length = line.length();
 
     prepareGeometryChange();
 
     if (length > qreal(20.)) {
-        QPointF edgeOffset((line.dx() * 10) / length, (line.dy() * 10) / length);
+        QPointF edgeOffset((line.dx() * 19) / length, (line.dy() * 19) / length);
         sourcePoint = line.p1() + edgeOffset;
         destPoint = line.p2() - edgeOffset;
     } else {
@@ -67,7 +67,10 @@ void EdgeForList::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWi
 
      double angle = std::atan2(-line.dy(), line.dx());
 
-    painter->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    if (!isChoosed)
+        painter->setPen(QPen(Qt::black, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    else
+        painter->setPen(QPen(Qt::red, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
     painter->drawLine(line);
 
 
@@ -77,6 +80,9 @@ void EdgeForList::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWi
                                               cos(angle - M_PI + M_PI / 3) * arrowSize);
 
 
-    painter->setBrush(Qt::black);
+    if (!isChoosed)
+        painter->setBrush(Qt::black);
+    else
+        painter->setBrush(Qt::red);
     painter->drawPolygon(QPolygonF() << line.p2() << destArrowP1 << destArrowP2);
 }

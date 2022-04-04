@@ -12,6 +12,7 @@ class NodeForList : public QGraphicsItem
 {
 public:
     int m_node_id = 0;
+    bool isChoosed = false;
     NodeForList(ListWidget *graphWidget);
 
     void addEdge(EdgeForList *edge);

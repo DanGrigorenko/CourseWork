@@ -39,13 +39,13 @@ bool NodeForList::advancePosition()
 QRectF NodeForList::boundingRect() const
 {
     qreal adjust = 2;
-    return QRectF( -10 - adjust, -10 - adjust, 23 + adjust, 23 + adjust);
+    return QRectF( -20 - adjust, -20 - adjust, 35 + adjust, 35 + adjust);
 }
 
 QPainterPath NodeForList::shape() const
 {
     QPainterPath path;
-    path.addEllipse(-10, -10, 20, 20);
+    path.addEllipse(-20, -20, 35, 35);
     return path;
 }
 
@@ -60,17 +60,23 @@ void NodeForList::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
         gradient.setCenter(3, 3);
         gradient.setFocalPoint(3, 3);
 
-        gradient.setColorAt(1, Qt::white);
+        if (!isChoosed)
+            gradient.setColorAt(1, Qt::white);
+        else
+            gradient.setColorAt(1, Qt::red);
     } else {
-        gradient.setColorAt(1, Qt::white);
+        if (!isChoosed)
+            gradient.setColorAt(1, Qt::white);
+        else
+            gradient.setColorAt(1, Qt::red);
     }
 
 
     painter->setBrush(gradient);
 
     painter->setPen(QPen(Qt::black, 3));
-    painter->drawEllipse(-10, -10, 20, 20);
-    painter->drawText(QPointF(-4,4),QString::number(m_node_id));
+    painter->drawEllipse(-20, -20, 35, 35);
+    painter->drawText(QPointF(-10,4),QString::number(m_node_id));
 }
 
 QVariant NodeForList::itemChange(GraphicsItemChange change, const QVariant &value)

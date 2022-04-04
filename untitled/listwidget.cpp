@@ -30,6 +30,7 @@ ListWidget::ListWidget(QWidget *parent)
     connect(RandomStoredBtn,SIGNAL(clicked()),this, SLOT(RandomSortedDiv()));
     connect(Menuu,SIGNAL(clicked()),this, SLOT(MenuDiv()));
     connect(CreateGo,SIGNAL(clicked()),this, SLOT(CreateGoDiv()));
+    connect(SearchGo,SIGNAL(clicked()),this, SLOT(SearchGoDiv()));
 
     scale(qreal(0.8), qreal(0.8));
 
@@ -115,7 +116,7 @@ void ListWidget::Node_ON_Scene(int nn)
 
     srand(time(NULL));
     for (int i = 0; i < nn; i++) {
-        listNodeForList.at(i)->m_node_id = 1+rand()%9;
+        listNodeForList.at(i)->m_node_id = 1+rand()%99;
         scene()->addItem(listNodeForList.at(i));
     }
 
@@ -330,7 +331,7 @@ void ListWidget::RandomSortedDiv()
     srand(time(NULL));
     QList<int> listInt;
     for (int i = 0; i < nn; i++) {
-        int num = 1+rand()%9;
+        int num = 1+rand()%99;
         listInt.push_back(num);
     }
 
@@ -450,6 +451,38 @@ void ListWidget::CreateGoDiv()
     QString number= FixedSizeLe->text();
     nn = number.toInt();
     Node_ON_Scene(nn);
+}
+
+void ListWidget::SearchGoDiv()
+{
+    int k = 0;
+    int edge_id;
+
+    for (int i = 0; i < nn; i++) {
+        listNodeForList.at(i)->isChoosed = true;
+        listNodeForList.at(i)->update();
+
+        if (listNodeForList.at(i)->m_node_id == SearchLE->text().toInt()) {
+            break;
+        }
+
+        timeChange(500);
+        if (i != nn-1) {
+            int maxid = qMax(k,k+1);
+            int minid = qMin(k,k+1);
+            edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            listEdgeForList[edge_id]->isChoosed = true;
+            listEdgeForList[edge_id]->update();
+            k++;
+            timeChange(500);
+            listEdgeForList[edge_id]->isChoosed = false;
+            listEdgeForList[edge_id]->update();
+        }
+
+
+         listNodeForList.at(i)->isChoosed = false;
+         listNodeForList.at(i)->update();
+    }
 }
 
 

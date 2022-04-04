@@ -34,6 +34,7 @@ public slots:
     void RandomSortedDiv();
     void MenuDiv();
     void CreateGoDiv();
+    void SearchGoDiv();
 
 protected:
     void scaleView(qreal scaleFactor);
@@ -51,7 +52,7 @@ private:
     QPushButton* RandomStoredBtn = new QPushButton();
     QPushButton* InsertHead = new QPushButton();
     QPushButton* InsertTail = new QPushButton();
-    QLineEdit* SearchLE = new QLineEdit();
+    QSpinBox* SearchLE = new QSpinBox();
     QLabel* SearchLabel = new QLabel();
     QPushButton* SearchGo = new QPushButton();
     QPushButton* RemoveHead = new QPushButton();

@@ -67,7 +67,10 @@ void Edge::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 
      double angle = std::atan2(-line.dy(), line.dx());
 
-    painter->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    if (!work)
+        painter->setPen(QPen(Qt::black, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    else
+        painter->setPen(QPen(Qt::red, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
     l = line.length();
     painter->drawText((sourcePoint+destPoint)/2 + QPointF(sin(angle + M_PI / 3) * arrowSize,
                                             cos(angle + M_PI / 3) * arrowSize),QString::number(l));
@@ -84,8 +87,10 @@ void Edge::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
     QPointF destArrowP2 = destPoint + QPointF(sin(angle - M_PI + M_PI / 3) * arrowSize,
                                               cos(angle - M_PI + M_PI / 3) * arrowSize);
 
-
-    painter->setBrush(Qt::black);
+    if (!work)
+        painter->setBrush(Qt::black);
+    else
+        painter->setBrush(Qt::red);
     painter->drawPolygon(QPolygonF() << line.p1() << sourceArrowP1 << sourceArrowP2);
     painter->drawPolygon(QPolygonF() << line.p2() << destArrowP1 << destArrowP2);
 }

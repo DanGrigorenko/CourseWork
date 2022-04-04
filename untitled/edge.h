@@ -13,6 +13,7 @@ public:
     int l;
     Node *sourceNode() const;
     Node *destNode() const;
+    bool work = false;
 
     void adjust();
 

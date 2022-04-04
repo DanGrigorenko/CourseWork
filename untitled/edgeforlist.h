@@ -13,6 +13,7 @@ public:
     EdgeForList(NodeForList *sourceNode, NodeForList *destNode);
     NodeForList *sourceNode() const;
     NodeForList *destNode() const;
+    bool isChoosed = false;
 
     void adjust();
 

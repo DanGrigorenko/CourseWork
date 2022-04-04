@@ -205,7 +205,7 @@ void GraphWidget::choosenode(int node_id)
     node_id--;
     if(is_waitlink == false)
     {
-        firstnode =  node_id;
+        firstnode = node_id;
         arr[firstnode]->is_choosed = true;
         arr[firstnode]->update();
         is_waitlink = true;
@@ -373,7 +373,6 @@ void GraphWidget::Deiksra() {
 
   Clear();
 
-
   for (int i = 0; i < nn; i++) {
       for (int j = 0; j < k; j++) {
           if (arr[i]->m_node_id == ver[j]) {
@@ -382,6 +381,16 @@ void GraphWidget::Deiksra() {
               break;
           }
       }
+   }
+
+  for (int i = 0; i < k; i++) {
+      if (i != k -1) {
+          int maxid = qMax(ver[i]-1,ver[i+1]-1);
+          int minid = qMin(ver[i]-1,ver[i+1]-1);
+          int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+          edge[edge_id]->work = true;
+          edge[edge_id]->update();
+    }
   }
 }
 
@@ -389,6 +398,13 @@ void GraphWidget::Clear() {
     for (int i = 0; i < nn; i++) {
          arr[i]->is_work = false;
          arr[i]->update();
-     }
+    }
+
+    for (int i = 0; i < 100000; i++) {
+        if (edge[i] != NULL) {
+            edge[i]->work = false;
+            edge[i]->update();
+        }
+    }
 }
 
