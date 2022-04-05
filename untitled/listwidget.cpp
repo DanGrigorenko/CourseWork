@@ -31,6 +31,10 @@ ListWidget::ListWidget(QWidget *parent)
     connect(Menuu,SIGNAL(clicked()),this, SLOT(MenuDiv()));
     connect(CreateGo,SIGNAL(clicked()),this, SLOT(CreateGoDiv()));
     connect(SearchGo,SIGNAL(clicked()),this, SLOT(SearchGoDiv()));
+    connect(InsertTail,SIGNAL(clicked()),this, SLOT(InsertTailDiv()));
+    connect(InsertHead,SIGNAL(clicked()),this, SLOT(InsertHeadlDiv()));
+    connect(RemoveHead,SIGNAL(clicked()),this, SLOT(RemoveHeadlDiv()));
+    connect(RemoveTail,SIGNAL(clicked()),this, SLOT(RemoveTaillDiv()));
 
     scale(qreal(0.8), qreal(0.8));
 
@@ -267,6 +271,8 @@ void ListWidget::RemoveDiv()
 
 void ListWidget::RandomDiv()
 {
+    countt = 0;
+     isFrontOrBack = false;
     FixedSizeLe->hide();
     CreateGo->hide();
 
@@ -298,6 +304,8 @@ void ListWidget::RandomDiv()
 
 void ListWidget::RandomSortedDiv()
 {
+    countt = 0;
+      isFrontOrBack = false;
      FixedSizeLe->hide();
      CreateGo->hide();
 
@@ -431,7 +439,8 @@ void ListWidget::MenuDiv()
 
 void ListWidget::CreateGoDiv()
 {
-
+    countt = 0;
+     isFrontOrBack = false;
     for (int i = 0; i < nn; i++) {
         scene()->removeItem(listNodeForList.at(i));
     }
@@ -455,6 +464,12 @@ void ListWidget::CreateGoDiv()
 
 void ListWidget::SearchGoDiv()
 {
+    for (int i = 0; i < nn; i++) {
+        listNodeForList.at(i)->desired = false;
+        listNodeForList.at(i)->isChoosed = false;
+        listNodeForList.at(i)->update();
+    }
+
     int k = 0;
     int edge_id;
 
@@ -463,6 +478,7 @@ void ListWidget::SearchGoDiv()
         listNodeForList.at(i)->update();
 
         if (listNodeForList.at(i)->m_node_id == SearchLE->text().toInt()) {
+            listNodeForList.at(i)->desired = true;
             break;
         }
 
@@ -483,6 +499,207 @@ void ListWidget::SearchGoDiv()
          listNodeForList.at(i)->isChoosed = false;
          listNodeForList.at(i)->update();
     }
+}
+
+void ListWidget::InsertTailDiv()
+{
+    countt = 0;
+     isFrontOrBack = false;
+
+    if (nn != 9)
+        nn++;
+    else
+        return;
+    NodeForList* node = new NodeForList(this);
+    node->m_node_id = 1+rand()%99;
+    listNodeForList.push_back(node);
+    scene()->addItem(listNodeForList.at(nn-1));
+
+    int num = 500;
+    for (int i = 0; i < nn; i++) {
+        if (i == 0) {
+            num+=nn*(-100);
+        }
+        listNodeForList.at(i)->setPos(num,-100);
+        num+=100;
+    }
+
+    int maxid = qMax(nn-2,nn-1);
+    int minid = qMin(nn-2,nn-1);
+    int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+
+    listEdgeForList[edge_id] = new EdgeForList(listNodeForList[nn-2], listNodeForList[nn-1]);
+    scene()->addItem(listEdgeForList[edge_id]);
+
+//    NodeForList* buff = listNodeForList[nn-1];
+//    QVariantAnimation* animation = new QPropertyAnimation(scene(), "geometry");
+//    animation->setDuration(1000);
+//    animation->setEasingCurve(QEasingCurve::Linear);
+//    animation->setEndValue(QRectF(listNodeForList[nn-2]->x()+100, listNodeForList[nn-2]->y(), nn, nn));
+//    animation->start(QAbstractAnimation::DeleteWhenStopped);
+
+}
+
+void ListWidget::InsertHeadlDiv()
+{
+    isFrontOrBack = true;
+    countt = 0;
+
+    if (nn != 9)
+        nn++;
+    else
+        return;
+
+    NodeForList* node = new NodeForList(this);
+    node->m_node_id = 1+rand()%99;
+    listNodeForList.push_front(node);
+    scene()->addItem(listNodeForList.at(0));
+
+    int num = 500;
+    for (int i = 0; i < nn; i++) {
+        if (i == 0) {
+            num+=nn*(-100);
+        }
+        listNodeForList.at(i)->setPos(num,-100);
+        num+=100;
+    }
+
+    int maxid = qMax(nn-2,nn-1);
+    int minid = qMin(nn-2,nn-1);
+    int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+
+    listEdgeForList[edge_id] = new EdgeForList(listNodeForList[0], listNodeForList[1]);
+    scene()->addItem(listEdgeForList[edge_id]);
+
+}
+
+void ListWidget::RemoveHeadlDiv()
+{
+    if (nn == 1)
+        return;
+
+    if (!isFrontOrBack) {
+        if (countt == 0) {
+            int maxid = qMax(0,1);
+            int minid = qMin(0,1);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            scene()->removeItem(listEdgeForList[edge_id]);
+            listEdgeForList[edge_id] = NULL;
+
+            scene()->removeItem(listNodeForList.at(0));
+            listNodeForList.pop_front();
+        }
+        else if (countt == 1) {
+            int maxid = qMax(1,2);
+            int minid = qMin(1,2);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            scene()->removeItem(listEdgeForList[edge_id]);
+            listEdgeForList[edge_id] = NULL;
+
+            scene()->removeItem(listNodeForList.at(0));
+            listNodeForList.pop_front();
+        }
+        else if (countt == 2) {
+            int maxid = qMax(2,3);
+            int minid = qMin(2,3);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            scene()->removeItem(listEdgeForList[edge_id]);
+            listEdgeForList[edge_id] = NULL;
+
+            scene()->removeItem(listNodeForList.at(0));
+            listNodeForList.pop_front();
+        }
+        else if (countt == 3) {
+            int maxid = qMax(3,4);
+            int minid = qMin(3,4);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            scene()->removeItem(listEdgeForList[edge_id]);
+            listEdgeForList[edge_id] = NULL;
+
+            scene()->removeItem(listNodeForList.at(0));
+            listNodeForList.pop_front();
+        }
+        else if (countt == 4) {
+            int maxid = qMax(4,5);
+            int minid = qMin(4,5);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            scene()->removeItem(listEdgeForList[edge_id]);
+            listEdgeForList[edge_id] = NULL;
+
+            scene()->removeItem(listNodeForList.at(0));
+            listNodeForList.pop_front();
+        }
+        else if (countt == 5) {
+            int maxid = qMax(5,6);
+            int minid = qMin(5,6);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            scene()->removeItem(listEdgeForList[edge_id]);
+            listEdgeForList[edge_id] = NULL;
+
+            scene()->removeItem(listNodeForList.at(0));
+            listNodeForList.pop_front();
+        }
+        else if (countt == 6) {
+            int maxid = qMax(6,7);
+            int minid = qMin(6,7);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            scene()->removeItem(listEdgeForList[edge_id]);
+            listEdgeForList[edge_id] = NULL;
+
+            scene()->removeItem(listNodeForList.at(0));
+            listNodeForList.pop_front();
+        }
+        else if (countt == 7) {
+            int maxid = qMax(7,8);
+            int minid = qMin(7,8);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            scene()->removeItem(listEdgeForList[edge_id]);
+            listEdgeForList[edge_id] = NULL;
+
+            scene()->removeItem(listNodeForList.at(0));
+            listNodeForList.pop_front();
+        }
+        else if (countt == 8) {
+            int maxid = qMax(8,9);
+            int minid = qMin(8,9);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            scene()->removeItem(listEdgeForList[edge_id]);
+            listEdgeForList[edge_id] = NULL;
+
+            scene()->removeItem(listNodeForList.at(0));
+            listNodeForList.pop_front();
+        }
+    }
+    else {
+        int maxid = qMax(nn-2,nn-1);
+        int minid = qMin(nn-2,nn-1);
+        int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+        scene()->removeItem(listEdgeForList[edge_id]);
+        listEdgeForList[edge_id] = NULL;
+
+        scene()->removeItem(listNodeForList.at(0));
+        listNodeForList.pop_front();
+    }
+    countt++;
+
+    nn--;
+}
+
+void ListWidget::RemoveTaillDiv()
+{
+    if (nn == 1)
+        return;
+
+    int maxid = qMax(nn-2,nn-1);
+    int minid = qMin(nn-2,nn-1);
+    int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+    scene()->removeItem(listEdgeForList[edge_id]);
+    listEdgeForList[edge_id] = NULL;
+
+    scene()->removeItem(listNodeForList.at(nn-1));
+    listNodeForList.pop_back();
+
+    nn--;
 }
 
 

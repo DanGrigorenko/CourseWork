@@ -9,6 +9,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QSpinBox>
+#include <QPropertyAnimation>
 
 class NodeForList;
 class EdgeForList;
@@ -35,12 +36,17 @@ public slots:
     void MenuDiv();
     void CreateGoDiv();
     void SearchGoDiv();
+    void InsertTailDiv();
+    void InsertHeadlDiv();
+    void RemoveHeadlDiv();
+    void RemoveTaillDiv();
 
 protected:
     void scaleView(qreal scaleFactor);
 
 private:
-    int nn = 3, count = 1;
+    int nn = 3, count = 1, countt = 0;
+    bool isFrontOrBack = false;
     QPushButton* InsertButton = new QPushButton();
     QPushButton* RemoveButton = new QPushButton();
     QPushButton* SearchButton = new QPushButton();

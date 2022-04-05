@@ -60,6 +60,8 @@ void NodeForList::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
         gradient.setCenter(3, 3);
         gradient.setFocalPoint(3, 3);
 
+        if (desired == true)
+            gradient.setColorAt(1, Qt::green);
         if (!isChoosed)
             gradient.setColorAt(1, Qt::white);
         else
@@ -67,6 +69,8 @@ void NodeForList::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     } else {
         if (!isChoosed)
             gradient.setColorAt(1, Qt::white);
+        else if (desired)
+            gradient.setColorAt(1, Qt::green);
         else
             gradient.setColorAt(1, Qt::red);
     }
