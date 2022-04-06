@@ -45,8 +45,8 @@ protected:
     void scaleView(qreal scaleFactor);
 
 private:
-    int nn = 3, count = 1, countt = 0;
-    bool isFrontOrBack = false;
+    int nn = 3, count = 1, countt = 0, counttt = 0;
+    bool isFront = false;
     QPushButton* InsertButton = new QPushButton();
     QPushButton* RemoveButton = new QPushButton();
     QPushButton* SearchButton = new QPushButton();

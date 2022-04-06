@@ -14,6 +14,7 @@ public:
     int m_node_id = 0;
     bool isChoosed = false;
     bool desired = false;
+    bool insertAndRemove = false;
     NodeForList(ListWidget *graphWidget);
 
     void addEdge(EdgeForList *edge);

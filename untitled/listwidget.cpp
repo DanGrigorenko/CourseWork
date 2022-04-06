@@ -271,8 +271,8 @@ void ListWidget::RemoveDiv()
 
 void ListWidget::RandomDiv()
 {
+     isFront = false;
     countt = 0;
-     isFrontOrBack = false;
     FixedSizeLe->hide();
     CreateGo->hide();
 
@@ -304,10 +304,10 @@ void ListWidget::RandomDiv()
 
 void ListWidget::RandomSortedDiv()
 {
+    isFront = false;
     countt = 0;
-      isFrontOrBack = false;
-     FixedSizeLe->hide();
-     CreateGo->hide();
+    FixedSizeLe->hide();
+    CreateGo->hide();
 
     for (int i = 0; i < nn; i++) {
         scene()->removeItem(listNodeForList.at(i));
@@ -439,8 +439,8 @@ void ListWidget::MenuDiv()
 
 void ListWidget::CreateGoDiv()
 {
+     isFront = false;
     countt = 0;
-     isFrontOrBack = false;
     for (int i = 0; i < nn; i++) {
         scene()->removeItem(listNodeForList.at(i));
     }
@@ -471,7 +471,7 @@ void ListWidget::SearchGoDiv()
     }
 
     int k = 0;
-    int edge_id;
+    int edge_id, maxid, minid;
 
     for (int i = 0; i < nn; i++) {
         listNodeForList.at(i)->isChoosed = true;
@@ -484,15 +484,21 @@ void ListWidget::SearchGoDiv()
 
         timeChange(500);
         if (i != nn-1) {
-            int maxid = qMax(k,k+1);
-            int minid = qMin(k,k+1);
-            edge_id = (18-minid)*(minid+1)/2+maxid-10;
-            listEdgeForList[edge_id]->isChoosed = true;
-            listEdgeForList[edge_id]->update();
-            k++;
-            timeChange(500);
-            listEdgeForList[edge_id]->isChoosed = false;
-            listEdgeForList[edge_id]->update();
+            if (!isFront) {
+                maxid = qMax(k,k+1);
+                minid = qMin(k,k+1);
+            }
+            else {
+                maxid = qMax(nn-i-2,nn-i-1);
+                minid = qMin(nn-i-2,nn-i-1);
+            }
+                edge_id = (18-minid)*(minid+1)/2+maxid-10;
+                listEdgeForList[edge_id]->isChoosed = true;
+                listEdgeForList[edge_id]->update();
+                k++;
+                timeChange(500);
+                listEdgeForList[edge_id]->isChoosed = false;
+                listEdgeForList[edge_id]->update();
         }
 
 
@@ -503,8 +509,14 @@ void ListWidget::SearchGoDiv()
 
 void ListWidget::InsertTailDiv()
 {
+    for (int i = 0; i < nn; i++) {
+        listNodeForList.at(i)->desired = false;
+        listNodeForList.at(i)->isChoosed = false;
+        listNodeForList.at(i)->update();
+    }
+
+    isFront = false;
     countt = 0;
-     isFrontOrBack = false;
 
     if (nn != 9)
         nn++;
@@ -531,18 +543,36 @@ void ListWidget::InsertTailDiv()
     listEdgeForList[edge_id] = new EdgeForList(listNodeForList[nn-2], listNodeForList[nn-1]);
     scene()->addItem(listEdgeForList[edge_id]);
 
-//    NodeForList* buff = listNodeForList[nn-1];
-//    QVariantAnimation* animation = new QPropertyAnimation(scene(), "geometry");
-//    animation->setDuration(1000);
-//    animation->setEasingCurve(QEasingCurve::Linear);
-//    animation->setEndValue(QRectF(listNodeForList[nn-2]->x()+100, listNodeForList[nn-2]->y(), nn, nn));
-//    animation->start(QAbstractAnimation::DeleteWhenStopped);
 
+
+   NodeForList* buff = listNodeForList[nn-1];
+   listNodeForList[nn-1]->insertAndRemove = true;
+   auto *moveAnimation = new QVariantAnimation();
+
+    moveAnimation->setDuration(1000);
+    moveAnimation->setStartValue(QPointF(listNodeForList[nn-2]->x(), listNodeForList[nn-2]->y()+100));
+    moveAnimation->setEndValue(QPointF(listNodeForList[nn-2]->x()+100, listNodeForList[nn-2]->y()));
+    moveAnimation->start(QAbstractAnimation::DeleteWhenStopped);
+
+    QObject::connect(moveAnimation, &QVariantAnimation::valueChanged, [buff](const QVariant &value){
+        buff->setPos(value.toPointF());
+        buff->update();
+    });
+
+    timeChange(1100);
+     listNodeForList[nn-1]->insertAndRemove = false;
+     listNodeForList[nn-1]->update();
 }
 
 void ListWidget::InsertHeadlDiv()
 {
-    isFrontOrBack = true;
+    for (int i = 0; i < nn; i++) {
+        listNodeForList.at(i)->desired = false;
+        listNodeForList.at(i)->isChoosed = false;
+        listNodeForList.at(i)->update();
+    }
+
+    isFront = true;
     countt = 0;
 
     if (nn != 9)
@@ -571,6 +601,23 @@ void ListWidget::InsertHeadlDiv()
     listEdgeForList[edge_id] = new EdgeForList(listNodeForList[0], listNodeForList[1]);
     scene()->addItem(listEdgeForList[edge_id]);
 
+    NodeForList* buff = listNodeForList[0];
+    listNodeForList[0]->insertAndRemove = true;
+    auto *moveAnimation = new QVariantAnimation();
+
+     moveAnimation->setDuration(1000);
+     moveAnimation->setStartValue(QPointF(listNodeForList[1]->x(), listNodeForList[1]->y()+100));
+     moveAnimation->setEndValue(QPointF(listNodeForList[1]->x()-100, listNodeForList[1]->y()));
+     moveAnimation->start(QAbstractAnimation::DeleteWhenStopped);
+
+     QObject::connect(moveAnimation, &QVariantAnimation::valueChanged, [buff](const QVariant &value){
+         buff->setPos(value.toPointF());
+         buff->update();
+     });
+
+     timeChange(1100);
+     listNodeForList[0]->insertAndRemove = false;
+     listNodeForList[0]->update();
 }
 
 void ListWidget::RemoveHeadlDiv()
@@ -578,97 +625,12 @@ void ListWidget::RemoveHeadlDiv()
     if (nn == 1)
         return;
 
-    if (!isFrontOrBack) {
-        if (countt == 0) {
-            int maxid = qMax(0,1);
-            int minid = qMin(0,1);
-            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-            scene()->removeItem(listEdgeForList[edge_id]);
-            listEdgeForList[edge_id] = NULL;
-
-            scene()->removeItem(listNodeForList.at(0));
-            listNodeForList.pop_front();
-        }
-        else if (countt == 1) {
-            int maxid = qMax(1,2);
-            int minid = qMin(1,2);
-            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-            scene()->removeItem(listEdgeForList[edge_id]);
-            listEdgeForList[edge_id] = NULL;
-
-            scene()->removeItem(listNodeForList.at(0));
-            listNodeForList.pop_front();
-        }
-        else if (countt == 2) {
-            int maxid = qMax(2,3);
-            int minid = qMin(2,3);
-            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-            scene()->removeItem(listEdgeForList[edge_id]);
-            listEdgeForList[edge_id] = NULL;
-
-            scene()->removeItem(listNodeForList.at(0));
-            listNodeForList.pop_front();
-        }
-        else if (countt == 3) {
-            int maxid = qMax(3,4);
-            int minid = qMin(3,4);
-            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-            scene()->removeItem(listEdgeForList[edge_id]);
-            listEdgeForList[edge_id] = NULL;
-
-            scene()->removeItem(listNodeForList.at(0));
-            listNodeForList.pop_front();
-        }
-        else if (countt == 4) {
-            int maxid = qMax(4,5);
-            int minid = qMin(4,5);
-            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-            scene()->removeItem(listEdgeForList[edge_id]);
-            listEdgeForList[edge_id] = NULL;
-
-            scene()->removeItem(listNodeForList.at(0));
-            listNodeForList.pop_front();
-        }
-        else if (countt == 5) {
-            int maxid = qMax(5,6);
-            int minid = qMin(5,6);
-            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-            scene()->removeItem(listEdgeForList[edge_id]);
-            listEdgeForList[edge_id] = NULL;
-
-            scene()->removeItem(listNodeForList.at(0));
-            listNodeForList.pop_front();
-        }
-        else if (countt == 6) {
-            int maxid = qMax(6,7);
-            int minid = qMin(6,7);
-            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-            scene()->removeItem(listEdgeForList[edge_id]);
-            listEdgeForList[edge_id] = NULL;
-
-            scene()->removeItem(listNodeForList.at(0));
-            listNodeForList.pop_front();
-        }
-        else if (countt == 7) {
-            int maxid = qMax(7,8);
-            int minid = qMin(7,8);
-            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-            scene()->removeItem(listEdgeForList[edge_id]);
-            listEdgeForList[edge_id] = NULL;
-
-            scene()->removeItem(listNodeForList.at(0));
-            listNodeForList.pop_front();
-        }
-        else if (countt == 8) {
-            int maxid = qMax(8,9);
-            int minid = qMin(8,9);
-            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-            scene()->removeItem(listEdgeForList[edge_id]);
-            listEdgeForList[edge_id] = NULL;
-
-            scene()->removeItem(listNodeForList.at(0));
-            listNodeForList.pop_front();
-        }
+    if (!isFront) {
+        int maxid = qMax(countt,countt+1);
+        int minid = qMin(countt,countt+1);
+        int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+        scene()->removeItem(listEdgeForList[edge_id]);
+        listEdgeForList[edge_id] = NULL;
     }
     else {
         int maxid = qMax(nn-2,nn-1);
@@ -676,12 +638,12 @@ void ListWidget::RemoveHeadlDiv()
         int edge_id = (18-minid)*(minid+1)/2+maxid-10;
         scene()->removeItem(listEdgeForList[edge_id]);
         listEdgeForList[edge_id] = NULL;
-
-        scene()->removeItem(listNodeForList.at(0));
-        listNodeForList.pop_front();
     }
-    countt++;
 
+    scene()->removeItem(listNodeForList.at(0));
+    listNodeForList.pop_front();
+
+    countt++;
     nn--;
 }
 
@@ -690,15 +652,26 @@ void ListWidget::RemoveTaillDiv()
     if (nn == 1)
         return;
 
-    int maxid = qMax(nn-2,nn-1);
-    int minid = qMin(nn-2,nn-1);
-    int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-    scene()->removeItem(listEdgeForList[edge_id]);
-    listEdgeForList[edge_id] = NULL;
+
+    if (isFront) {
+        int maxid = qMax(countt,countt+1);
+        int minid = qMin(countt,countt+1);
+        int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+        scene()->removeItem(listEdgeForList[edge_id]);
+        listEdgeForList[edge_id] = NULL;
+    }
+    else {
+        int maxid = qMax(nn-2,nn-1);
+        int minid = qMin(nn-2,nn-1);
+        int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+        scene()->removeItem(listEdgeForList[edge_id]);
+        listEdgeForList[edge_id] = NULL;
+    }
 
     scene()->removeItem(listNodeForList.at(nn-1));
     listNodeForList.pop_back();
 
+    countt++;
     nn--;
 }
 

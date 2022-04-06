@@ -62,15 +62,19 @@ void NodeForList::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 
         if (desired == true)
             gradient.setColorAt(1, Qt::green);
-        if (!isChoosed)
+        else if (insertAndRemove)
+            gradient.setColorAt(1, Qt::green);
+        else if (!isChoosed)
             gradient.setColorAt(1, Qt::white);
         else
             gradient.setColorAt(1, Qt::red);
     } else {
-        if (!isChoosed)
-            gradient.setColorAt(1, Qt::white);
-        else if (desired)
+        if (desired == true)
             gradient.setColorAt(1, Qt::green);
+        else if (insertAndRemove)
+            gradient.setColorAt(1, Qt::green);
+        else if (!isChoosed)
+            gradient.setColorAt(1, Qt::white);
         else
             gradient.setColorAt(1, Qt::red);
     }
