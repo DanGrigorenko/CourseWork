@@ -24,7 +24,7 @@ public slots:
     void Node_ON_Scene(int n);
     void RemoveEdge();
     void choosenode(int node_id);
-    void Deiksra();
+    void Deikstra();
     void Clear();
 
 protected:

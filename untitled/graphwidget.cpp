@@ -36,22 +36,22 @@ GraphWidget::GraphWidget(QWidget *parent)
 void GraphWidget::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
-    case Qt::Key_Plus:
-        zoomIn();
-        break;
-    case Qt::Key_Minus:
-        zoomOut();
-        break;
-    case Qt::Key_Space:
-        shuffle();
-        break;
-    case Qt::Key_F10:
-        Deiksra();
-        break;
-    case Qt::Key_F11:
-        RemoveEdge();
-        break;
-    default:
+        case Qt::Key_Plus:
+            zoomIn();
+            break;
+        case Qt::Key_Minus:
+            zoomOut();
+            break;
+        case Qt::Key_Space:
+            shuffle();
+            break;
+        case Qt::Key_F10:
+            Deikstra();
+            break;
+        case Qt::Key_F11:
+            RemoveEdge();
+            break;
+        default:
         QGraphicsView::keyPressEvent(event);
     }
 }
@@ -70,9 +70,9 @@ void GraphWidget::drawBackground(QPainter *painter, const QRectF &rect)
     QRectF rightShadow(sceneRect.right(), sceneRect.top() + 5, 5, sceneRect.height());
     QRectF bottomShadow(sceneRect.left() + 5, sceneRect.bottom(), sceneRect.width(), 5);
     if (rightShadow.intersects(rect) || rightShadow.contains(rect))
-        painter->fillRect(rightShadow, Qt::darkGray);
+    painter->fillRect(rightShadow, Qt::darkGray);
     if (bottomShadow.intersects(rect) || bottomShadow.contains(rect))
-        painter->fillRect(bottomShadow, Qt::darkGray);
+    painter->fillRect(bottomShadow, Qt::darkGray);
 
     QLinearGradient gradient(sceneRect.topLeft(), sceneRect.bottomRight());
     gradient.setColorAt(0, Qt::white);
@@ -80,9 +80,6 @@ void GraphWidget::drawBackground(QPainter *painter, const QRectF &rect)
     painter->fillRect(rect.intersected(sceneRect), gradient);
     painter->setBrush(Qt::NoBrush);
     painter->drawRect(sceneRect);
-
-//    QRectF textRect(sceneRect.left() + 4, sceneRect.top() + 4,
-//                    sceneRect.width() - 4, sceneRect.height() - 4);
 
     QFont font = painter->font();
     font.setBold(true);
@@ -114,12 +111,12 @@ void GraphWidget::shuffle()
 void GraphWidget::Node_ON_Scene(int nn)
 {
     for (int i = 0; i < nn; i++) {
-        arr[i] = new Node(this);
+    arr[i] = new Node(this);
     }
 
     for (int i = 0; i < nn; i++) {
-        arr[i]->m_node_id = i+1;
-        scene()->addItem(arr[i]);
+    arr[i]->m_node_id = i+1;
+    scene()->addItem(arr[i]);
     }
 
     int num = -50;
@@ -164,12 +161,11 @@ void GraphWidget::zoomIn()
         arr[i] =NULL;
     }
 
-
     if (nn <= 8) {
         nn++;
     }
     else {
-         QMessageBox::warning(this, tr("Ошибка"), tr("Максимальное количество граф равно '9'!"));//сообщение об ошибке
+        QMessageBox::warning(this, tr("Ошибка"), tr("Максимальное количество граф равно '9'!"));//сообщение об ошибке
     }
 
     Node_ON_Scene(nn);
@@ -191,10 +187,10 @@ void GraphWidget::zoomOut()
 
 
     if (nn > 3) {
-         nn--;
+        nn--;
     }
     else {
-         QMessageBox::warning(this, tr("Ошибка"), tr("Минимальное количествво граф равно '3'!"));//сообщение об ошибке
+        QMessageBox::warning(this, tr("Ошибка"), tr("Минимальное количествво граф равно '3'!"));//сообщение об ошибке
     }
     Node_ON_Scene(nn);
 }
@@ -203,29 +199,24 @@ void GraphWidget::choosenode(int node_id)
 {
     Clear();
     node_id--;
-    if(is_waitlink == false)
-    {
+    if(is_waitlink == false) {
         firstnode = node_id;
         arr[firstnode]->is_choosed = true;
         arr[firstnode]->update();
         is_waitlink = true;
     }
-    else
-    {
+    else {
         arr[firstnode]->is_choosed = false;
         arr[firstnode]->update();
-        if(node_id != firstnode)
-        {
+        if(node_id != firstnode) {
             int maxid = qMax(node_id,firstnode);
             int minid = qMin(node_id,firstnode);
             int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-            if(!edge[edge_id])
-            {
+            if(!edge[edge_id]) {
                 edge[edge_id] = new Edge(arr[firstnode], arr[node_id]);
                 scene()->addItem(edge[edge_id]);
             }
-            else
-            {
+            else {
                 scene()->removeItem(edge[edge_id]);
                 edge[edge_id] = NULL;
                 arr[firstnode]->is_choosed = false;
@@ -245,7 +236,7 @@ void GraphWidget::RemoveEdge() {
     }
 }
 
-void GraphWidget::Deiksra() {
+void GraphWidget::Deikstra() {
     int count = 0;
     for (auto item : edge) {
         if (item == NULL) {
@@ -289,115 +280,104 @@ void GraphWidget::Deiksra() {
 
     for (int i = 0; i< nn; i++)
     {
-       for (int j = 0; j<nn; j++) {
-           a[i][j] = 0;
-       }
+        for (int j = 0; j<nn; j++) {
+            a[i][j] = 0;
+        }
     }
 
     for (int i = 0; i< nn; i++)
     {
-       for (int j = i + 1; j<nn; j++) {
-           int maxid = qMax(arr[j]->m_node_id-1,arr[i]->m_node_id-1);
-           int minid = qMin(arr[j]->m_node_id-1,arr[i]->m_node_id-1);
-           int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-           if(!edge[edge_id])
-           {
-               a[i][j] = 0;
-               a[j][i] = 0;
-           }
-           else
-           {
-               a[i][j] = edge[edge_id]->l;
-               a[j][i] = edge[edge_id]->l;
-           }
+        for (int j = i + 1; j<nn; j++) {
+            int maxid = qMax(arr[j]->m_node_id-1,arr[i]->m_node_id-1);
+            int minid = qMin(arr[j]->m_node_id-1,arr[i]->m_node_id-1);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            if(!edge[edge_id]) {
+                a[i][j] = 0;
+                a[j][i] = 0;
+            }
+            else {
+                a[i][j] = edge[edge_id]->l;
+                a[j][i] = edge[edge_id]->l;
+            }
         }
     }
 
 
-   for (int i = 0; i<nn; i++)
-   {
-     d[i] = 10000;
-     v[i] = list[0].toInt();
-   }
-   d[begin_index] = 0;
-   do {
-     minindex = 10000;
-     min = 10000;
-     for (int i = 0; i<nn; i++)
-     {
-       if ((v[i] == list[0].toInt()) && (d[i]<min))
-       {
-         min = d[i];
-         minindex = i;
-       }
-     }
-
-     if (minindex != 10000)
-     {
-       for (int i = 0; i<nn; i++)
-       {
-         if (a[minindex][i] > 0)
-         {
-           temp = min + a[minindex][i];
-           if (temp < d[i])
-           {
-             d[i] = temp;
-           }
-         }
-       }
-       v[minindex] = 0;
-     }
-   } while (minindex < 10000);
-
-   int ver[nn];
-   int end = list[1].toInt() - 1;
-   ver[0] = end + 1;
-   int k = 1;
-   int weight = d[end];
-
-   while (end != begin_index)
-   {
-     for (int i = 0; i<nn; i++)
-       if (a[i][end] != 0)
-       {
-         int temp = weight - a[i][end];
-         if (temp == d[i])
-         {
-           weight = temp;
-           end = i;
-           ver[k] = i + 1;
-           k++;
-         }
-       }
-   }
-
-  Clear();
-
-  for (int i = 0; i < nn; i++) {
-      for (int j = 0; j < k; j++) {
-          if (arr[i]->m_node_id == ver[j]) {
-              arr[i]->is_work = true;
-              arr[i]->update();
-              break;
-          }
-      }
-   }
-
-  for (int i = 0; i < k; i++) {
-      if (i != k -1) {
-          int maxid = qMax(ver[i]-1,ver[i+1]-1);
-          int minid = qMin(ver[i]-1,ver[i+1]-1);
-          int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-          edge[edge_id]->work = true;
-          edge[edge_id]->update();
+    for (int i = 0; i<nn; i++) {
+        d[i] = 10000;
+        v[i] = list[0].toInt();
     }
-  }
+
+    d[begin_index] = 0;
+    do {
+        minindex = 10000;
+        min = 10000;
+        for (int i = 0; i<nn; i++) {
+            if ((v[i] == list[0].toInt()) && (d[i]<min)) {
+                min = d[i];
+                minindex = i;
+            }
+        }
+
+        if (minindex != 10000) {
+            for (int i = 0; i<nn; i++) {
+                if (a[minindex][i] > 0) {
+                    temp = min + a[minindex][i];
+                    if (temp < d[i]) {
+                        d[i] = temp;
+                    }
+                }
+            }
+            v[minindex] = 0;
+        }
+    } while (minindex < 10000);
+
+    int ver[nn];
+    int end = list[1].toInt() - 1;
+    ver[0] = end + 1;
+    int k = 1;
+    int weight = d[end];
+
+    while (end != begin_index) {
+        for (int i = 0; i<nn; i++)
+        if (a[i][end] != 0) {
+            int temp = weight - a[i][end];
+            if (temp == d[i]) {
+                weight = temp;
+                end = i;
+                ver[k] = i + 1;
+                k++;
+            }
+        }
+    }
+
+    Clear();
+
+    for (int i = 0; i < nn; i++) {
+        for (int j = 0; j < k; j++) {
+            if (arr[i]->m_node_id == ver[j]) {
+                arr[i]->is_work = true;
+                arr[i]->update();
+                break;
+            }
+        }
+    }
+
+    for (int i = 0; i < k; i++) {
+        if (i != k -1) {
+            int maxid = qMax(ver[i]-1,ver[i+1]-1);
+            int minid = qMin(ver[i]-1,ver[i+1]-1);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            edge[edge_id]->work = true;
+            edge[edge_id]->update();
+        }
+    }
 }
 
 void GraphWidget::Clear() {
     for (int i = 0; i < nn; i++) {
-         arr[i]->is_work = false;
-         arr[i]->update();
+        arr[i]->is_work = false;
+        arr[i]->update();
     }
 
     for (int i = 0; i < 100000; i++) {

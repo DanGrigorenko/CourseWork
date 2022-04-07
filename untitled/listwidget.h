@@ -1,10 +1,10 @@
 #ifndef LISTWIDGET_H
 #define LISTWIDGET_H
 
-
 #include <QGraphicsView>
 #include <QLineEdit>
 #include <QList>
+#include <QStack>
 #include <QPushButton>
 #include <QLineEdit>
 #include <QLabel>
@@ -21,48 +21,59 @@ public:
     ListWidget(QWidget *parent = nullptr);
     QList<NodeForList*> listNodeForList;
     EdgeForList* listEdgeForList[100000];
+    QStack<NodeForList*> sackNodeForList;
+    EdgeForList* stackEdgeForList[100000];
     int firstnode = 0;
 
 public slots:
+    void ShowMenuItem();
     void timeChange(int time);
-    void Node_ON_Scene(int n);
-    void CreateDiv();
-    void InsertDiv();
-    void SearchDiv();
-    void RandomFixSizeDiv();
-    void RemoveDiv();
-    void RandomDiv();
-    void RandomSortedDiv();
-    void MenuDiv();
-    void CreateGoDiv();
-    void SearchGoDiv();
-    void InsertTailDiv();
-    void InsertHeadlDiv();
-    void RemoveHeadlDiv();
-    void RemoveTaillDiv();
+    void NodePlacement();
+    void AddEdge(int firstIndex);
+    void RemoveEdge(int firstIndex);
+    void HideButtons();
+    void LinkListButtonClicked();
+    void StackButtonClicked();
+    void ListNode(int n);
+    void CreateButtonClicked();
+    void InsertButtonClicked();
+    void SearchButtonClicked();
+    void RandomFixSizeButtonClicked();
+    void RemoveButtonClicked();
+    void RandomButtonClicked();
+    void RandomSortedButtonClicked();
+    void MenuButtonClicked();
+    void CreateGoButtonClicked();
+    void SearchGoButtonClicked();
+    void InsertTailButtonClicked();
+    void InsertHeadButtonClicked();
+    void RemoveHeadButtonClicked();
+    void RemoveTailButtonClicked();
 
 protected:
     void scaleView(qreal scaleFactor);
 
 private:
     int nn = 3, count = 1, countt = 0, counttt = 0;
-    bool isFront = false;
+    bool isFront = false, isStack = false;
+    QPushButton* LinkListButton = new QPushButton();
+    QPushButton* StackButton = new QPushButton();
     QPushButton* InsertButton = new QPushButton();
     QPushButton* RemoveButton = new QPushButton();
     QPushButton* SearchButton = new QPushButton();
     QPushButton* CreatButton = new QPushButton();
-    QPushButton* RandomBtn = new QPushButton();
+    QPushButton* RandomButton = new QPushButton();
     QPushButton* RandomFxdS = new QPushButton();
     QSpinBox* FixedSizeLe = new QSpinBox();
-    QPushButton* CreateGo = new QPushButton();
-    QPushButton* RandomStoredBtn = new QPushButton();
-    QPushButton* InsertHead = new QPushButton();
-    QPushButton* InsertTail = new QPushButton();
+    QPushButton* CreateGoButton = new QPushButton();
+    QPushButton* RandomStoredButton = new QPushButton();
+    QPushButton* InsertHeadButton = new QPushButton();
+    QPushButton* InsertTailButton = new QPushButton();
     QSpinBox* SearchLE = new QSpinBox();
     QLabel* SearchLabel = new QLabel();
-    QPushButton* SearchGo = new QPushButton();
-    QPushButton* RemoveHead = new QPushButton();
-    QPushButton* RemoveTail = new QPushButton();
-    QPushButton* Menuu = new QPushButton();
+    QPushButton* SearchGoButton = new QPushButton();
+    QPushButton* RemoveHeadButton = new QPushButton();
+    QPushButton* RemoveTailButton = new QPushButton();
+    QPushButton* MenuuButton = new QPushButton();
 };
 #endif // LISTWIDGET_H

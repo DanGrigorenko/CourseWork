@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_GraphWidget_t {
     const uint offsetsAndSize[24];
-    char stringdata0[96];
+    char stringdata0[97];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_GraphWidget_t, stringdata0) + ofs), len 
@@ -39,13 +39,13 @@ QT_MOC_LITERAL(50, 1), // "n"
 QT_MOC_LITERAL(52, 10), // "RemoveEdge"
 QT_MOC_LITERAL(63, 10), // "choosenode"
 QT_MOC_LITERAL(74, 7), // "node_id"
-QT_MOC_LITERAL(82, 7), // "Deiksra"
-QT_MOC_LITERAL(90, 5) // "Clear"
+QT_MOC_LITERAL(82, 8), // "Deikstra"
+QT_MOC_LITERAL(91, 5) // "Clear"
 
     },
     "GraphWidget\0shuffle\0\0zoomIn\0zoomOut\0"
     "Node_ON_Scene\0n\0RemoveEdge\0choosenode\0"
-    "node_id\0Deiksra\0Clear"
+    "node_id\0Deikstra\0Clear"
 };
 #undef QT_MOC_LITERAL
 
@@ -97,7 +97,7 @@ void GraphWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 3: _t->Node_ON_Scene((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 4: _t->RemoveEdge(); break;
         case 5: _t->choosenode((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 6: _t->Deiksra(); break;
+        case 6: _t->Deikstra(); break;
         case 7: _t->Clear(); break;
         default: ;
         }
