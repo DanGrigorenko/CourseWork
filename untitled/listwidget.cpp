@@ -90,6 +90,7 @@ ListWidget::ListWidget(QWidget *parent)
                              "QPushButton:hover{background: black; border:none; color: white;}");
     MenuuButton->show();
 
+
     FixedSizeLe->setMaximum(9);
     ListNode(nn);
 }
@@ -103,7 +104,14 @@ void ListWidget::ShowMenuItem()
     CreatButton->show();
 
     SearchButton->setGeometry(-415, 130, 150, 30);
-    SearchButton->setText("Поиск");
+    if (!isStack) {
+        SearchButton->setText("Поиск");
+        scene()->update();
+    }
+    else {
+        SearchButton->setText("Просмотор Head");
+        scene()->update();
+    }
     SearchButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
                         "QPushButton:hover{background: black; border:none; color: white;}");
     SearchButton->show();
@@ -143,6 +151,18 @@ void ListWidget::NodePlacement()
     }
 }
 
+void ListWidget::StackNodePlacement()
+{
+    int num = -500;
+    for (int i = 0; i < nn; i++) {
+        if (i == 0) {
+            num+=800;
+        }
+        stackNodeForList.at(i)->setPos(400,num);
+        num-=100;
+    }
+}
+
 void ListWidget::AddEdge(int firstIndex)
 {
     int maxid = qMax(firstIndex,firstIndex+1);
@@ -161,6 +181,26 @@ void ListWidget::RemoveEdge(int index)
 
     scene()->removeItem(listEdgeForList[edge_id]);
     listEdgeForList[edge_id] = NULL;
+}
+
+void ListWidget::StackEdgeRemove(int i)
+{
+    int maxid = qMax(i,i+1);
+    int minid = qMin(i,i+1);
+    int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+
+    scene()->removeItem(stackEdgeForList[edge_id]);
+    stackEdgeForList[edge_id] = NULL;
+}
+
+void ListWidget::StackEdgeAdd(int i)
+{
+    int maxid = qMax(i,i+1);
+    int minid = qMin(i,i+1);
+    int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+
+    stackEdgeForList[edge_id] = new EdgeForList(stackNodeForList[i+1], stackNodeForList[i]);
+    scene()->addItem(stackEdgeForList[edge_id]);
 }
 
 void ListWidget::HideButtons()
@@ -186,12 +226,53 @@ void ListWidget::HideButtons()
 
 void ListWidget::LinkListButtonClicked()
 {
+    HideButtons();
+    count = 1;
     isStack = false;
+    if (!stackNodeForList.isEmpty()) {
+        for (int i = 0; i < nn; i++) {
+            scene()->removeItem(stackNodeForList.at(i));
+        }
+
+        for (int i = 0; i < nn; i++) {
+            if (i != nn-1) {
+                StackEdgeRemove(i);
+            }
+        }
+        stackNodeForList.clear();
+    }
+
+    if (listNodeForList.isEmpty()) {
+        ListNode(nn);
+    }
 }
 
 void ListWidget::StackButtonClicked()
 {
+    HideButtons();
+     count = 1;
     isStack = true;
+    if (!listNodeForList.isEmpty()) {
+        for (int i = 0; i < nn; i++) {
+            scene()->removeItem(listNodeForList.at(i));
+        }
+
+        int k = 0;
+        for (int i = 0; i < 100000; i++) {
+            if (listEdgeForList[i] != NULL) {
+                RemoveEdge(k);
+                k++;
+            }
+        }
+        listNodeForList.clear();
+    }
+
+    if (stackNodeForList.isEmpty()) {
+        if (nn > 6) {
+            nn -= 3;
+        }
+        StackNode(nn);
+    }
 }
 
 void ListWidget::scaleView(qreal scaleFactor)
@@ -220,6 +301,29 @@ void ListWidget::ListNode(int nn)
     for (int i = 0; i < nn; i++) {
         if (i != nn-1) {
             AddEdge(i);
+        }
+    }
+
+    scene()->update();
+}
+
+void ListWidget::StackNode(int nn)
+{
+    for (int i = 0; i < nn; i++) {
+        stackNodeForList.push(new NodeForList(this));
+    }
+
+    srand(time(NULL));
+    for (int i = 0; i < nn; i++) {
+        stackNodeForList.at(i)->m_node_id = 1+rand()%99;
+        scene()->addItem(stackNodeForList.at(i));
+    }
+
+    StackNodePlacement();
+
+    for (int i = 0; i < nn; i++) {
+        if (i != nn-1) {
+            StackEdgeAdd(i);
         }
     }
 
@@ -282,19 +386,25 @@ void ListWidget::SearchButtonClicked()
     RemoveHeadButton->hide();
     RemoveTailButton->hide();
 
-    SearchLE->setGeometry(-230, 130, 60, 30);
-    SearchLE->show();
+    if (!isStack) {
 
-    SearchLabel->setGeometry(-260,130,30,30);
-    SearchLabel->setText("v=");
-    SearchLabel->setStyleSheet("background: #D7E1E9; font-size: 25px");
-    SearchLabel->show();
+        SearchLE->setGeometry(-230, 130, 60, 30);
+        SearchLE->show();
 
-    SearchGoButton->setGeometry(-160, 130, 50, 30);
-    SearchGoButton->setText("Go");
-    SearchGoButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                             "QPushButton:hover{background: black; border:none; color: white;}");
-    SearchGoButton->show();
+        SearchLabel->setGeometry(-260,130,30,30);
+        SearchLabel->setText("v=");
+        SearchLabel->setStyleSheet("background: #D7E1E9; font-size: 25px");
+        SearchLabel->show();
+
+        SearchGoButton->setGeometry(-160, 130, 50, 30);
+        SearchGoButton->setText("Go");
+        SearchGoButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
+                                 "QPushButton:hover{background: black; border:none; color: white;}");
+        SearchGoButton->show();
+    }
+    else  {
+        stackNodeForList.at(0)->desired = true;
+    }
 }
 
 void ListWidget::InsertButtonClicked()
@@ -310,17 +420,61 @@ void ListWidget::InsertButtonClicked()
     RemoveHeadButton->hide();
     RemoveTailButton->hide();
 
-    InsertHeadButton->setGeometry(-230, 160, 150, 30);
-    InsertHeadButton->setText("i=0(Head), specify v=");
-    InsertHeadButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                             "QPushButton:hover{background: black; border:none; color: white;}");
-    InsertHeadButton->show();
+    if (!isStack) {
+        InsertHeadButton->setGeometry(-230, 160, 150, 30);
+        InsertHeadButton->setText("i=0(Head), specify v=");
+        InsertHeadButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
+                                 "QPushButton:hover{background: black; border:none; color: white;}");
+        InsertHeadButton->show();
 
-    InsertTailButton->setGeometry(-60, 160, 150, 30);
-    InsertTailButton->setText("i=0(Tail), specify v=");
-    InsertTailButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                             "QPushButton:hover{background: black; border:none; color: white;}");
-    InsertTailButton->show();
+        InsertTailButton->setGeometry(-60, 160, 150, 30);
+        InsertTailButton->setText("i=0(Tail), specify v=");
+        InsertTailButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
+                                 "QPushButton:hover{background: black; border:none; color: white;}");
+        InsertTailButton->show();
+    }
+    else {
+        if (nn != 6) {
+            for (int i = 0; i < nn; i++) {
+                if (i != nn-1) {
+                    StackEdgeRemove(i);
+                }
+            }
+            nn++;
+        }
+        else
+            return;
+
+        NodeForList* node = new NodeForList(this);
+        node->m_node_id = 1+rand()%99;
+        stackNodeForList.push(node);
+        scene()->addItem(stackNodeForList.at(nn-1));
+
+        StackNodePlacement();
+
+        for (int i = 0; i < nn; i++) {
+            if (i != nn-1) {
+                StackEdgeAdd(i);
+            }
+        }
+
+        NodeForList* buff = stackNodeForList[nn-1];
+        stackNodeForList[nn-1]->insertAndRemove = true;
+        auto *moveAnimation = new QVariantAnimation();
+        moveAnimation->setDuration(2000);
+        moveAnimation->setStartValue(QPointF( stackNodeForList[nn-2]->x()-100,  stackNodeForList[nn-2]->y()));
+        moveAnimation->setEndValue(QPointF( stackNodeForList[nn-2]->x(),  stackNodeForList[nn-2]->y()-100));
+        moveAnimation->start(QAbstractAnimation::DeleteWhenStopped);
+
+        QObject::connect(moveAnimation, &QVariantAnimation::valueChanged, [buff](const QVariant &value){
+            buff->setPos(value.toPointF());
+            buff->update();
+        });
+
+        timeChange(2100);
+        stackNodeForList[nn-1]->insertAndRemove = false;
+        stackNodeForList[nn-1]->update();
+    }
 }
 
 void ListWidget::RemoveButtonClicked()
@@ -336,45 +490,85 @@ void ListWidget::RemoveButtonClicked()
     InsertHeadButton->hide();
     InsertTailButton->hide();
 
-    RemoveHeadButton->setGeometry(-230, 190, 150, 30);
-    RemoveHeadButton->setText("Remove i=0 (Head)");
-    RemoveHeadButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                             "QPushButton:hover{background: black; border:none; color: white;}");
-    RemoveHeadButton->show();
+     if (!isStack) {
+        RemoveHeadButton->setGeometry(-230, 190, 150, 30);
+        RemoveHeadButton->setText("Remove i=0 (Head)");
+        RemoveHeadButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
+                                 "QPushButton:hover{background: black; border:none; color: white;}");
+        RemoveHeadButton->show();
 
-    RemoveTailButton->setGeometry(-60, 190, 150, 30);
-    RemoveTailButton->setText("Remove i=N-1 (Tail)");
-    RemoveTailButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                             "QPushButton:hover{background: black; border:none; color: white;}");
-    RemoveTailButton->show();
+        RemoveTailButton->setGeometry(-60, 190, 150, 30);
+        RemoveTailButton->setText("Remove i=N-1 (Tail)");
+        RemoveTailButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
+                                 "QPushButton:hover{background: black; border:none; color: white;}");
+        RemoveTailButton->show();
+    }
+     else {
+
+         if (nn == 1)
+             return;
+
+         int maxid = qMax(nn-2,nn-1);
+         int minid = qMin(nn-2,nn-1);
+         int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+         scene()->removeItem(stackEdgeForList[edge_id]);
+         stackEdgeForList[edge_id] = NULL;
+
+         scene()->removeItem(stackNodeForList.at(nn-1));
+         stackNodeForList.pop_back();
+
+         nn--;
+     }
 }
 
 void ListWidget::RandomButtonClicked()
 {
+
     isFront = false;
     countt = 0;
     FixedSizeLe->hide();
     CreateGoButton->hide();
 
-    for (int i = 0; i < nn; i++) {
-        scene()->removeItem(listNodeForList.at(i));
-    }
-
-    int k = 0;
-    for (int i = 0; i < 100000; i++) {
-        if (listEdgeForList[i] != NULL) {
-            RemoveEdge(k);
-            k++;
+    if (!isStack) {
+        for (int i = 0; i < nn; i++) {
+            scene()->removeItem(listNodeForList.at(i));
         }
-    }
-    listNodeForList.clear();
 
-    srand(time(NULL));
-    int b = nn;
-    while (nn == b) {
-        nn = 2 + rand()%(9-2+1);
+        int k = 0;
+        for (int i = 0; i < 100000; i++) {
+            if (listEdgeForList[i] != NULL) {
+                RemoveEdge(k);
+                k++;
+            }
+        }
+        listNodeForList.clear();
+
+        srand(time(NULL));
+        int b = nn;
+        while (nn == b) {
+            nn = 2 + rand()%(9-2+1);
+        }
+        ListNode(nn);
     }
-    ListNode(nn);
+    else {
+        for (int i = 0; i < nn; i++) {
+            scene()->removeItem(stackNodeForList.at(i));
+        }
+
+        for (int i = 0; i < nn; i++) {
+            if (i != nn-1) {
+                StackEdgeRemove(i);
+            }
+        }
+        stackNodeForList.clear();
+
+        srand(time(NULL));
+        int b = nn;
+        while (nn == b) {
+            nn = 2 + rand()%(6-2+1);
+        }
+        StackNode(nn);
+    }
 }
 
 void ListWidget::RandomSortedButtonClicked()
@@ -384,62 +578,122 @@ void ListWidget::RandomSortedButtonClicked()
     FixedSizeLe->hide();
     CreateGoButton->hide();
 
-    for (int i = 0; i < nn; i++) {
-        scene()->removeItem(listNodeForList.at(i));
-    }
-
-    int k = 0;
-    for (int i = 0; i < 100000; i++) {
-        if (listEdgeForList[i] != NULL) {
-            RemoveEdge(k);
-            k++;
+    if (!isStack) {
+        for (int i = 0; i < nn; i++) {
+            scene()->removeItem(listNodeForList.at(i));
         }
-    }
-    listNodeForList.clear();
 
-    srand(time(NULL));
-    int b = nn;
-    while (nn == b) {
-        nn = 2 + rand()%(9-2+1);
-    }
-
-    for (int i = 0; i < nn; i++) {
-        listNodeForList.push_back(new NodeForList(this));
-    }
-
-    srand(time(NULL));
-    QList<int> listInt;
-    for (int i = 0; i < nn; i++) {
-        int num = 1+rand()%99;
-        listInt.push_back(num);
-    }
-
-    for (int i = 0; i < nn-1; i++) {
-        for (int j = 0; j < nn-i-1; j++) {
-            if (listInt[j] > listInt[j+1]) {
-                qSwap(listInt[j],listInt[j+1]);
+        int k = 0;
+        for (int i = 0; i < 100000; i++) {
+            if (listEdgeForList[i] != NULL) {
+                RemoveEdge(k);
+                k++;
             }
         }
-    }
+        listNodeForList.clear();
 
-    for (int i = 0; i < nn; i++) {
-        listNodeForList.at(i)->m_node_id = listInt.at(i);
-        scene()->addItem(listNodeForList.at(i));
-    }
-
-    NodePlacement();
-
-    for (int i = 0; i < nn; i++) {
-        if (i != nn-1) {
-            AddEdge(i);
+        srand(time(NULL));
+        int b = nn;
+        while (nn == b) {
+            nn = 2 + rand()%(9-2+1);
         }
+
+        for (int i = 0; i < nn; i++) {
+            listNodeForList.push_back(new NodeForList(this));
+        }
+
+        srand(time(NULL));
+        QList<int> listInt;
+        for (int i = 0; i < nn; i++) {
+            int num = 1+rand()%99;
+            listInt.push_back(num);
+        }
+
+        for (int i = 0; i < nn-1; i++) {
+            for (int j = 0; j < nn-i-1; j++) {
+                if (listInt[j] > listInt[j+1]) {
+                    qSwap(listInt[j],listInt[j+1]);
+                }
+            }
+        }
+
+        for (int i = 0; i < nn; i++) {
+            listNodeForList.at(i)->m_node_id = listInt.at(i);
+            scene()->addItem(listNodeForList.at(i));
+        }
+
+        NodePlacement();
+
+        for (int i = 0; i < nn; i++) {
+            if (i != nn-1) {
+                AddEdge(i);
+            }
+        }
+
+        scene()->update();
+    }
+    else {
+        for (int i = 0; i < nn; i++) {
+            scene()->removeItem(stackNodeForList.at(i));
+        }
+
+        for (int i = 0; i < nn; i++) {
+            if (i != nn-1) {
+               StackEdgeRemove(i);
+            }
+        }
+        stackNodeForList.clear();
+
+        srand(time(NULL));
+        int b = nn;
+        while (nn == b) {
+            nn = 2 + rand()%(6-2+1);
+        }
+
+        for (int i = 0; i < nn; i++) {
+            stackNodeForList.push(new NodeForList(this));
+        }
+
+        srand(time(NULL));
+        QList<int> listInt;
+        for (int i = 0; i < nn; i++) {
+            int num = 1+rand()%99;
+            listInt.push_back(num);
+        }
+
+        for (int i = 0; i < nn-1; i++) {
+            for (int j = 0; j < nn-i-1; j++) {
+                if (listInt[j] > listInt[j+1]) {
+                    qSwap(listInt[j],listInt[j+1]);
+                }
+            }
+        }
+
+        int k = nn-1;
+        for (int i = 0; i < nn; i++) {
+            stackNodeForList.at(i)->m_node_id = listInt.at(k);
+            scene()->addItem(stackNodeForList.at(i));
+            k--;
+        }
+
+        StackNodePlacement();
+
+        for (int i = 0; i < nn; i++) {
+            if (i != nn-1) {
+                StackEdgeAdd(i);
+            }
+        }
+        scene()->update();
     }
 
-    scene()->update();
 }
 
 void ListWidget::RandomFixSizeButtonClicked()
 {
+    if(!isStack)
+        FixedSizeLe->setMaximum(9);
+    else
+        FixedSizeLe->setMaximum(6);
     FixedSizeLe->setGeometry(-20, 125, 76, 30);
     FixedSizeLe->show();
 
@@ -452,25 +706,43 @@ void ListWidget::RandomFixSizeButtonClicked()
 
 void ListWidget::CreateGoButtonClicked()
 {
-    isFront = false;
-    countt = 0;
+    if (!isStack) {
+        isFront = false;
+        countt = 0;
 
-    for (int i = 0; i < nn; i++) {
-        scene()->removeItem(listNodeForList.at(i));
-    }
-
-    int k = 0;
-    for (int i = 0; i < 100000; i++) {
-        if (listEdgeForList[i] != NULL) {
-            RemoveEdge(k);
-            k++;
+        for (int i = 0; i < nn; i++) {
+            scene()->removeItem(listNodeForList.at(i));
         }
-    }
-    listNodeForList.clear();
 
-    QString number= FixedSizeLe->text();
-    nn = number.toInt();
-    ListNode(nn);
+        int k = 0;
+        for (int i = 0; i < 100000; i++) {
+            if (listEdgeForList[i] != NULL) {
+                RemoveEdge(k);
+                k++;
+            }
+        }
+        listNodeForList.clear();
+
+        QString number= FixedSizeLe->text();
+        nn = number.toInt();
+        ListNode(nn);
+    }
+    else {
+        for (int i = 0; i < nn; i++) {
+            scene()->removeItem(stackNodeForList.at(i));
+        }
+
+        for (int i = 0; i < nn; i++) {
+            if (i != nn-1) {
+               StackEdgeRemove(i);
+            }
+        }
+        stackNodeForList.clear();
+
+        QString number= FixedSizeLe->text();
+        nn = number.toInt();
+        StackNode(nn);
+    }
 }
 
 void ListWidget::SearchGoButtonClicked()

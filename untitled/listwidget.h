@@ -21,7 +21,7 @@ public:
     ListWidget(QWidget *parent = nullptr);
     QList<NodeForList*> listNodeForList;
     EdgeForList* listEdgeForList[100000];
-    QStack<NodeForList*> sackNodeForList;
+    QStack<NodeForList*> stackNodeForList;
     EdgeForList* stackEdgeForList[100000];
     int firstnode = 0;
 
@@ -29,12 +29,16 @@ public slots:
     void ShowMenuItem();
     void timeChange(int time);
     void NodePlacement();
-    void AddEdge(int firstIndex);
-    void RemoveEdge(int firstIndex);
+    void StackNodePlacement();
+    void AddEdge(int i);
+    void RemoveEdge(int i);
+    void StackEdgeRemove(int i);
+    void StackEdgeAdd(int i);
     void HideButtons();
     void LinkListButtonClicked();
     void StackButtonClicked();
     void ListNode(int n);
+    void StackNode(int n);
     void CreateButtonClicked();
     void InsertButtonClicked();
     void SearchButtonClicked();
