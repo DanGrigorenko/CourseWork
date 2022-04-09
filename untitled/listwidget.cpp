@@ -173,14 +173,23 @@ void ListWidget::AddEdge(int firstIndex)
     scene()->addItem(listEdgeForList[edge_id]);
 }
 
-void ListWidget::RemoveEdge(int index)
+void ListWidget::RemoveEdge(int index, bool flag)
 {
-    int maxid = qMax(index,index+1);
-    int minid = qMin(index,index+1);
-    int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+    if (!flag) {
+        int maxid = qMax(index,index+1);
+        int minid = qMin(index,index+1);
+        int edge_id = (18-minid)*(minid+1)/2+maxid-10;
 
-    scene()->removeItem(listEdgeForList[edge_id]);
-    listEdgeForList[edge_id] = NULL;
+        scene()->removeItem(listEdgeForList[edge_id]);
+        listEdgeForList[edge_id] = NULL;
+    }
+    else {
+        int maxid = qMax(index-2,index-1);
+        int minid = qMin(index-2,index-1);
+        int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+        scene()->removeItem(listEdgeForList[edge_id]);
+        listEdgeForList[edge_id] = NULL;
+    }
 }
 
 void ListWidget::StackEdgeRemove(int i)
@@ -257,11 +266,9 @@ void ListWidget::StackButtonClicked()
             scene()->removeItem(listNodeForList.at(i));
         }
 
-        int k = 0;
-        for (int i = 0; i < 100000; i++) {
-            if (listEdgeForList[i] != NULL) {
-                RemoveEdge(k);
-                k++;
+        for (int i = 0; i < nn; i++) {
+            if (i != nn-1) {
+                RemoveEdge(i, false);
             }
         }
         listNodeForList.clear();
@@ -403,7 +410,8 @@ void ListWidget::SearchButtonClicked()
         SearchGoButton->show();
     }
     else  {
-        stackNodeForList.at(0)->desired = true;
+        stackNodeForList[nn-1]->isChoosed = true;
+        stackNodeForList[nn-1]->update();
     }
 }
 
@@ -435,6 +443,9 @@ void ListWidget::InsertButtonClicked()
     }
     else {
         if (nn != 6) {
+            stackNodeForList[nn-1]->isChoosed = false;
+            stackNodeForList[nn-1]->update();
+
             for (int i = 0; i < nn; i++) {
                 if (i != nn-1) {
                     StackEdgeRemove(i);
@@ -479,6 +490,7 @@ void ListWidget::InsertButtonClicked()
 
 void ListWidget::RemoveButtonClicked()
 {
+
     SearchLE->hide();
     RandomButton->hide();
     RandomStoredButton->hide();
@@ -504,6 +516,8 @@ void ListWidget::RemoveButtonClicked()
         RemoveTailButton->show();
     }
      else {
+         stackNodeForList[nn-1]->isChoosed = false;
+         stackNodeForList[nn-1]->update();
 
          if (nn == 1)
              return;
@@ -534,11 +548,9 @@ void ListWidget::RandomButtonClicked()
             scene()->removeItem(listNodeForList.at(i));
         }
 
-        int k = 0;
-        for (int i = 0; i < 100000; i++) {
-            if (listEdgeForList[i] != NULL) {
-                RemoveEdge(k);
-                k++;
+        for (int i = 0; i < nn; i++) {
+            if (i != nn-1) {
+                RemoveEdge(i, false);
             }
         }
         listNodeForList.clear();
@@ -583,11 +595,9 @@ void ListWidget::RandomSortedButtonClicked()
             scene()->removeItem(listNodeForList.at(i));
         }
 
-        int k = 0;
-        for (int i = 0; i < 100000; i++) {
-            if (listEdgeForList[i] != NULL) {
-                RemoveEdge(k);
-                k++;
+        for (int i = 0; i < nn; i++) {
+            if (i != nn-1) {
+                RemoveEdge(i, false);
             }
         }
         listNodeForList.clear();
@@ -714,11 +724,9 @@ void ListWidget::CreateGoButtonClicked()
             scene()->removeItem(listNodeForList.at(i));
         }
 
-        int k = 0;
-        for (int i = 0; i < 100000; i++) {
-            if (listEdgeForList[i] != NULL) {
-                RemoveEdge(k);
-                k++;
+        for (int i = 0; i < nn; i++) {
+            if (i != nn-1) {
+                RemoveEdge(i, false);
             }
         }
         listNodeForList.clear();
@@ -889,14 +897,10 @@ void ListWidget::RemoveHeadButtonClicked()
         return;
 
     if (!isFront) {
-        RemoveEdge(countt);
+        RemoveEdge(countt, false);
     }
     else {
-        int maxid = qMax(nn-2,nn-1);
-        int minid = qMin(nn-2,nn-1);
-        int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-        scene()->removeItem(listEdgeForList[edge_id]);
-        listEdgeForList[edge_id] = NULL;
+        RemoveEdge(nn, true);
     }
 
     scene()->removeItem(listNodeForList.at(0));
@@ -912,14 +916,10 @@ void ListWidget::RemoveTailButtonClicked()
         return;
 
     if (isFront) {
-         RemoveEdge(countt);
+         RemoveEdge(countt, false);
     }
     else {
-        int maxid = qMax(nn-2,nn-1);
-        int minid = qMin(nn-2,nn-1);
-        int edge_id = (18-minid)*(minid+1)/2+maxid-10;
-        scene()->removeItem(listEdgeForList[edge_id]);
-        listEdgeForList[edge_id] = NULL;
+        RemoveEdge(nn, true);
     }
 
     scene()->removeItem(listNodeForList.at(nn-1));

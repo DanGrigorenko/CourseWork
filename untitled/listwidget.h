@@ -31,7 +31,7 @@ public slots:
     void NodePlacement();
     void StackNodePlacement();
     void AddEdge(int i);
-    void RemoveEdge(int i);
+    void RemoveEdge(int i, bool flag);
     void StackEdgeRemove(int i);
     void StackEdgeAdd(int i);
     void HideButtons();

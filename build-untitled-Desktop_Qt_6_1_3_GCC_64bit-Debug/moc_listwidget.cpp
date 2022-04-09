@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ListWidget_t {
-    const uint offsetsAndSize[64];
-    char stringdata0[509];
+    const uint offsetsAndSize[66];
+    char stringdata0[514];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_ListWidget_t, stringdata0) + ofs), len 
@@ -40,33 +40,34 @@ QT_MOC_LITERAL(55, 18), // "StackNodePlacement"
 QT_MOC_LITERAL(74, 7), // "AddEdge"
 QT_MOC_LITERAL(82, 1), // "i"
 QT_MOC_LITERAL(84, 10), // "RemoveEdge"
-QT_MOC_LITERAL(95, 15), // "StackEdgeRemove"
-QT_MOC_LITERAL(111, 12), // "StackEdgeAdd"
-QT_MOC_LITERAL(124, 11), // "HideButtons"
-QT_MOC_LITERAL(136, 21), // "LinkListButtonClicked"
-QT_MOC_LITERAL(158, 18), // "StackButtonClicked"
-QT_MOC_LITERAL(177, 8), // "ListNode"
-QT_MOC_LITERAL(186, 1), // "n"
-QT_MOC_LITERAL(188, 9), // "StackNode"
-QT_MOC_LITERAL(198, 19), // "CreateButtonClicked"
-QT_MOC_LITERAL(218, 19), // "InsertButtonClicked"
-QT_MOC_LITERAL(238, 19), // "SearchButtonClicked"
-QT_MOC_LITERAL(258, 26), // "RandomFixSizeButtonClicked"
-QT_MOC_LITERAL(285, 19), // "RemoveButtonClicked"
-QT_MOC_LITERAL(305, 19), // "RandomButtonClicked"
-QT_MOC_LITERAL(325, 25), // "RandomSortedButtonClicked"
-QT_MOC_LITERAL(351, 17), // "MenuButtonClicked"
-QT_MOC_LITERAL(369, 21), // "CreateGoButtonClicked"
-QT_MOC_LITERAL(391, 21), // "SearchGoButtonClicked"
-QT_MOC_LITERAL(413, 23), // "InsertTailButtonClicked"
-QT_MOC_LITERAL(437, 23), // "InsertHeadButtonClicked"
-QT_MOC_LITERAL(461, 23), // "RemoveHeadButtonClicked"
-QT_MOC_LITERAL(485, 23) // "RemoveTailButtonClicked"
+QT_MOC_LITERAL(95, 4), // "flag"
+QT_MOC_LITERAL(100, 15), // "StackEdgeRemove"
+QT_MOC_LITERAL(116, 12), // "StackEdgeAdd"
+QT_MOC_LITERAL(129, 11), // "HideButtons"
+QT_MOC_LITERAL(141, 21), // "LinkListButtonClicked"
+QT_MOC_LITERAL(163, 18), // "StackButtonClicked"
+QT_MOC_LITERAL(182, 8), // "ListNode"
+QT_MOC_LITERAL(191, 1), // "n"
+QT_MOC_LITERAL(193, 9), // "StackNode"
+QT_MOC_LITERAL(203, 19), // "CreateButtonClicked"
+QT_MOC_LITERAL(223, 19), // "InsertButtonClicked"
+QT_MOC_LITERAL(243, 19), // "SearchButtonClicked"
+QT_MOC_LITERAL(263, 26), // "RandomFixSizeButtonClicked"
+QT_MOC_LITERAL(290, 19), // "RemoveButtonClicked"
+QT_MOC_LITERAL(310, 19), // "RandomButtonClicked"
+QT_MOC_LITERAL(330, 25), // "RandomSortedButtonClicked"
+QT_MOC_LITERAL(356, 17), // "MenuButtonClicked"
+QT_MOC_LITERAL(374, 21), // "CreateGoButtonClicked"
+QT_MOC_LITERAL(396, 21), // "SearchGoButtonClicked"
+QT_MOC_LITERAL(418, 23), // "InsertTailButtonClicked"
+QT_MOC_LITERAL(442, 23), // "InsertHeadButtonClicked"
+QT_MOC_LITERAL(466, 23), // "RemoveHeadButtonClicked"
+QT_MOC_LITERAL(490, 23) // "RemoveTailButtonClicked"
 
     },
     "ListWidget\0ShowMenuItem\0\0timeChange\0"
     "time\0NodePlacement\0StackNodePlacement\0"
-    "AddEdge\0i\0RemoveEdge\0StackEdgeRemove\0"
+    "AddEdge\0i\0RemoveEdge\0flag\0StackEdgeRemove\0"
     "StackEdgeAdd\0HideButtons\0LinkListButtonClicked\0"
     "StackButtonClicked\0ListNode\0n\0StackNode\0"
     "CreateButtonClicked\0InsertButtonClicked\0"
@@ -98,28 +99,28 @@ static const uint qt_meta_data_ListWidget[] = {
        5,    0,  180,    2, 0x0a,    3 /* Public */,
        6,    0,  181,    2, 0x0a,    4 /* Public */,
        7,    1,  182,    2, 0x0a,    5 /* Public */,
-       9,    1,  185,    2, 0x0a,    7 /* Public */,
-      10,    1,  188,    2, 0x0a,    9 /* Public */,
-      11,    1,  191,    2, 0x0a,   11 /* Public */,
-      12,    0,  194,    2, 0x0a,   13 /* Public */,
-      13,    0,  195,    2, 0x0a,   14 /* Public */,
-      14,    0,  196,    2, 0x0a,   15 /* Public */,
-      15,    1,  197,    2, 0x0a,   16 /* Public */,
-      17,    1,  200,    2, 0x0a,   18 /* Public */,
-      18,    0,  203,    2, 0x0a,   20 /* Public */,
-      19,    0,  204,    2, 0x0a,   21 /* Public */,
-      20,    0,  205,    2, 0x0a,   22 /* Public */,
-      21,    0,  206,    2, 0x0a,   23 /* Public */,
-      22,    0,  207,    2, 0x0a,   24 /* Public */,
-      23,    0,  208,    2, 0x0a,   25 /* Public */,
-      24,    0,  209,    2, 0x0a,   26 /* Public */,
-      25,    0,  210,    2, 0x0a,   27 /* Public */,
-      26,    0,  211,    2, 0x0a,   28 /* Public */,
-      27,    0,  212,    2, 0x0a,   29 /* Public */,
-      28,    0,  213,    2, 0x0a,   30 /* Public */,
-      29,    0,  214,    2, 0x0a,   31 /* Public */,
-      30,    0,  215,    2, 0x0a,   32 /* Public */,
-      31,    0,  216,    2, 0x0a,   33 /* Public */,
+       9,    2,  185,    2, 0x0a,    7 /* Public */,
+      11,    1,  190,    2, 0x0a,   10 /* Public */,
+      12,    1,  193,    2, 0x0a,   12 /* Public */,
+      13,    0,  196,    2, 0x0a,   14 /* Public */,
+      14,    0,  197,    2, 0x0a,   15 /* Public */,
+      15,    0,  198,    2, 0x0a,   16 /* Public */,
+      16,    1,  199,    2, 0x0a,   17 /* Public */,
+      18,    1,  202,    2, 0x0a,   19 /* Public */,
+      19,    0,  205,    2, 0x0a,   21 /* Public */,
+      20,    0,  206,    2, 0x0a,   22 /* Public */,
+      21,    0,  207,    2, 0x0a,   23 /* Public */,
+      22,    0,  208,    2, 0x0a,   24 /* Public */,
+      23,    0,  209,    2, 0x0a,   25 /* Public */,
+      24,    0,  210,    2, 0x0a,   26 /* Public */,
+      25,    0,  211,    2, 0x0a,   27 /* Public */,
+      26,    0,  212,    2, 0x0a,   28 /* Public */,
+      27,    0,  213,    2, 0x0a,   29 /* Public */,
+      28,    0,  214,    2, 0x0a,   30 /* Public */,
+      29,    0,  215,    2, 0x0a,   31 /* Public */,
+      30,    0,  216,    2, 0x0a,   32 /* Public */,
+      31,    0,  217,    2, 0x0a,   33 /* Public */,
+      32,    0,  218,    2, 0x0a,   34 /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -127,14 +128,14 @@ static const uint qt_meta_data_ListWidget[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    8,
-    QMetaType::Void, QMetaType::Int,    8,
+    QMetaType::Void, QMetaType::Int, QMetaType::Bool,    8,   10,
     QMetaType::Void, QMetaType::Int,    8,
     QMetaType::Void, QMetaType::Int,    8,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   16,
-    QMetaType::Void, QMetaType::Int,   16,
+    QMetaType::Void, QMetaType::Int,   17,
+    QMetaType::Void, QMetaType::Int,   17,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -164,7 +165,7 @@ void ListWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 2: _t->NodePlacement(); break;
         case 3: _t->StackNodePlacement(); break;
         case 4: _t->AddEdge((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 5: _t->RemoveEdge((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 5: _t->RemoveEdge((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
         case 6: _t->StackEdgeRemove((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 7: _t->StackEdgeAdd((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 8: _t->HideButtons(); break;
@@ -199,7 +200,7 @@ const QMetaObject ListWidget::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_ListWidget_t
 
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
