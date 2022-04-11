@@ -26,6 +26,21 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuCghdrf">
+    <property name="title">
+     <string>Справка</string>
+    </property>
+    <widget class="QMenu" name="menu">
+     <property name="title">
+      <string>Структуры данных</string>
+     </property>
+     <addaction name="separator"/>
+     <addaction name="action_4"/>
+     <addaction name="action_5"/>
+    </widget>
+    <addaction name="menu"/>
+   </widget>
+   <addaction name="menuCghdrf"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -50,6 +65,16 @@
    </property>
    <property name="toolTip">
     <string>Вернуться</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>Список</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>Стек</string>
    </property>
   </action>
  </widget>

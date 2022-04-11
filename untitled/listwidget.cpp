@@ -12,6 +12,7 @@
 #include <QTimer>
 #include <QEventLoop>
 #include <algorithm>
+#include <QGraphicsColorizeEffect>
 
 ListWidget::ListWidget(QWidget *parent)
     : QGraphicsView(parent)
@@ -72,13 +73,13 @@ ListWidget::ListWidget(QWidget *parent)
     ShowMenuItem();
     HideButtons();
 
-    LinkListButton->setGeometry(-500, -340, 495, 50);
+    LinkListButton->setGeometry(-500, -320, 495, 50);
     LinkListButton->setText("Cписок       ");
     LinkListButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: right;}"
                              "QPushButton:hover{background: black; border:none; color: white;}");
     LinkListButton->show();
 
-    StackButton->setGeometry(-5, -340, 513, 50);
+    StackButton->setGeometry(-5, -320, 513, 50);
     StackButton->setText("      Стек");
     StackButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
                              "QPushButton:hover{background: black; border:none; color: white;}");
@@ -522,6 +523,20 @@ void ListWidget::RemoveButtonClicked()
          if (nn == 1)
              return;
 
+         NodeForList* buff = stackNodeForList.at(nn-1);
+         stackNodeForList[nn-1]->isChoosed = true;
+         auto *moveAnimation = new QVariantAnimation();
+         moveAnimation->setDuration(1000);
+         moveAnimation->setStartValue(QPointF(stackNodeForList.at(nn-1)->x(),  stackNodeForList.at(nn-1)->y()));
+         moveAnimation->setEndValue(QPointF(stackNodeForList.at(nn-2)->x(),  stackNodeForList.at(nn-2)->y()-40));
+         moveAnimation->start(QAbstractAnimation::DeleteWhenStopped);
+
+         QObject::connect(moveAnimation, &QVariantAnimation::valueChanged, [buff](const QVariant &value){
+             buff->setPos(value.toPointF());
+             buff->update();
+         });
+         timeChange(1000);
+
          int maxid = qMax(nn-2,nn-1);
          int minid = qMin(nn-2,nn-1);
          int edge_id = (18-minid)*(minid+1)/2+maxid-10;
@@ -897,12 +912,37 @@ void ListWidget::RemoveHeadButtonClicked()
         return;
 
     if (!isFront) {
+        NodeForList* buff = listNodeForList.at(0);
+        listNodeForList[0]->isChoosed = true;
+        auto *moveAnimation = new QVariantAnimation();
+        moveAnimation->setDuration(1000);
+        moveAnimation->setStartValue(QPointF( listNodeForList.at(0)->x(),  listNodeForList.at(0)->y()));
+        moveAnimation->setEndValue(QPointF(listNodeForList.at(1)->x()-40,  listNodeForList.at(1)->y()));
+        moveAnimation->start(QAbstractAnimation::DeleteWhenStopped);
+
+        QObject::connect(moveAnimation, &QVariantAnimation::valueChanged, [buff](const QVariant &value){
+            buff->setPos(value.toPointF());
+            buff->update();
+        });
+        timeChange(1000);
         RemoveEdge(countt, false);
     }
     else {
+        NodeForList* buff = listNodeForList.at(0);
+        listNodeForList[0]->isChoosed = true;
+        auto *moveAnimation = new QVariantAnimation();
+        moveAnimation->setDuration(1000);
+        moveAnimation->setStartValue(QPointF( listNodeForList.at(0)->x(),  listNodeForList.at(0)->y()));
+        moveAnimation->setEndValue(QPointF(listNodeForList.at(1)->x()-40,  listNodeForList.at(1)->y()));
+        moveAnimation->start(QAbstractAnimation::DeleteWhenStopped);
+
+        QObject::connect(moveAnimation, &QVariantAnimation::valueChanged, [buff](const QVariant &value){
+            buff->setPos(value.toPointF());
+            buff->update();
+        });
+        timeChange(1000);
         RemoveEdge(nn, true);
     }
-
     scene()->removeItem(listNodeForList.at(0));
     listNodeForList.pop_front();
 
@@ -916,9 +956,35 @@ void ListWidget::RemoveTailButtonClicked()
         return;
 
     if (isFront) {
+        NodeForList* buff = listNodeForList.at(nn-1);
+        listNodeForList[nn-1]->isChoosed = true;
+        auto *moveAnimation = new QVariantAnimation();
+        moveAnimation->setDuration(1000);
+        moveAnimation->setStartValue(QPointF( listNodeForList.at(nn-1)->x(),  listNodeForList.at(nn-1)->y()));
+        moveAnimation->setEndValue(QPointF(listNodeForList.at(nn-2)->x()+40,  listNodeForList.at(nn-2)->y()));
+        moveAnimation->start(QAbstractAnimation::DeleteWhenStopped);
+
+        QObject::connect(moveAnimation, &QVariantAnimation::valueChanged, [buff](const QVariant &value){
+            buff->setPos(value.toPointF());
+            buff->update();
+        });
+        timeChange(1000);
          RemoveEdge(countt, false);
     }
     else {
+        NodeForList* buff = listNodeForList.at(nn-1);
+        listNodeForList[nn-1]->isChoosed = true;
+        auto *moveAnimation = new QVariantAnimation();
+        moveAnimation->setDuration(1000);
+        moveAnimation->setStartValue(QPointF( listNodeForList.at(nn-1)->x(),  listNodeForList.at(nn-1)->y()));
+        moveAnimation->setEndValue(QPointF(listNodeForList.at(nn-2)->x()+40,  listNodeForList.at(nn-2)->y()));
+        moveAnimation->start(QAbstractAnimation::DeleteWhenStopped);
+
+        QObject::connect(moveAnimation, &QVariantAnimation::valueChanged, [buff](const QVariant &value){
+            buff->setPos(value.toPointF());
+            buff->update();
+        });
+        timeChange(1000);
         RemoveEdge(nn, true);
     }
 
