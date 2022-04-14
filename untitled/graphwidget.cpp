@@ -272,6 +272,34 @@ void GraphWidget::Deikstra() {
         return;
     }
 
+    int exCount = 0;
+    for (int i = 0; i < nn; i++) {
+            int maxid = qMax(list[0].toInt()-1,arr[i]->m_node_id-1);
+            int minid = qMin(list[0].toInt()-1,arr[i]->m_node_id-1);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            if(edge[edge_id] == NULL) {
+                ++exCount;
+                if (exCount == nn) {
+                    QMessageBox::warning(this, tr("Ошибка"), tr("Невозможно построить путь от этой вершины!"));//сообщение об ошибке
+                    return;
+                }
+            }
+    }
+
+    exCount = 0;
+    for (int i = 0; i < nn; i++) {
+            int maxid = qMax(list[1].toInt()-1,arr[i]->m_node_id-1);
+            int minid = qMin(list[1].toInt()-1,arr[i]->m_node_id-1);
+            int edge_id = (18-minid)*(minid+1)/2+maxid-10;
+            if(edge[edge_id] == NULL) {
+                ++exCount;
+                if (exCount == nn) {
+                    QMessageBox::warning(this, tr("Ошибка"), tr("Невозможно построить путь до этой вершины!"));//сообщение об ошибке
+                    return;
+                }
+            }
+    }
+
     int a[nn][nn];
     int d[nn];
     int v[nn];
