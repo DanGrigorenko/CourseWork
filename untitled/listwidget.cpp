@@ -20,7 +20,6 @@ ListWidget::ListWidget(QWidget *parent)
     for (int i = 0; i < 100000; i++) {
         listEdgeForList[i] = NULL;
     }
-
     connect(CreatButton,SIGNAL(clicked()),this, SLOT(CreateButtonClicked()));
     connect(RandomFxdS,SIGNAL(clicked()),this, SLOT(RandomFixSizeButtonClicked()));
     connect(InsertButton,SIGNAL(clicked()),this, SLOT(InsertButtonClicked()));
@@ -454,8 +453,11 @@ void ListWidget::InsertButtonClicked()
             }
             nn++;
         }
-        else
+        else {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Максимальная длинна стека 6!"));//сообщение об ошибке
             return;
+        }
+        InsertButton->setEnabled(false);
 
         NodeForList* node = new NodeForList(this);
         node->m_node_id = 1+rand()%99;
@@ -486,6 +488,7 @@ void ListWidget::InsertButtonClicked()
         timeChange(2100);
         stackNodeForList[nn-1]->insertAndRemove = false;
         stackNodeForList[nn-1]->update();
+        InsertButton->setEnabled(true);
     }
 }
 
@@ -517,11 +520,14 @@ void ListWidget::RemoveButtonClicked()
         RemoveTailButton->show();
     }
      else {
+         if (nn == 1) {
+             QMessageBox::warning(this, tr("Ошибка"), tr("Минимальная длинна стека 1!"));//сообщение об ошибке
+             return;
+         }
+         RemoveButton->setEnabled(false);
+
          stackNodeForList[nn-1]->isChoosed = false;
          stackNodeForList[nn-1]->update();
-
-         if (nn == 1)
-             return;
 
          NodeForList* buff = stackNodeForList.at(nn-1);
          stackNodeForList[nn-1]->isChoosed = true;
@@ -547,6 +553,8 @@ void ListWidget::RemoveButtonClicked()
          stackNodeForList.pop_back();
 
          nn--;
+         RemoveButton->setEnabled(true);
+
      }
 }
 
@@ -824,8 +832,12 @@ void ListWidget::InsertHeadButtonClicked()
 
     if (nn != 9)
         nn++;
-    else
+    else {
+        QMessageBox::warning(this, tr("Ошибка"), tr("Максимальная длинна листа 9!"));//сообщение об ошибке
         return;
+    }
+
+    InsertHeadButton->setEnabled(false);
 
     NodeForList* node = new NodeForList(this);
     node->m_node_id = 1+rand()%99;
@@ -856,6 +868,7 @@ void ListWidget::InsertHeadButtonClicked()
     timeChange(1100);
     listNodeForList[0]->insertAndRemove = false;
     listNodeForList[0]->update();
+    InsertHeadButton->setEnabled(true);
 }
 
 
@@ -872,8 +885,12 @@ void ListWidget::InsertTailButtonClicked()
 
     if (nn != 9)
         nn++;
-    else
+    else {
+        QMessageBox::warning(this, tr("Ошибка"), tr("Максимальная длинна листа 9!"));//сообщение об ошибке
         return;
+    }
+
+    InsertTailButton->setEnabled(false);
 
     NodeForList* node = new NodeForList(this);
     node->m_node_id = 1+rand()%99;
@@ -904,12 +921,17 @@ void ListWidget::InsertTailButtonClicked()
     timeChange(1100);
     listNodeForList[nn-1]->insertAndRemove = false;
     listNodeForList[nn-1]->update();
+    InsertTailButton->setEnabled(true);
 }
 
 void ListWidget::RemoveHeadButtonClicked()
 {
-    if (nn == 1)
+    if (nn == 1) {
+        QMessageBox::warning(this, tr("Ошибка"), tr("Минимальная длинна листа 1!"));//сообщение об ошибке
         return;
+    }
+
+    RemoveHeadButton->setEnabled(false);
 
     if (!isFront) {
         NodeForList* buff = listNodeForList.at(0);
@@ -946,14 +968,20 @@ void ListWidget::RemoveHeadButtonClicked()
     scene()->removeItem(listNodeForList.at(0));
     listNodeForList.pop_front();
 
+    RemoveHeadButton->setEnabled(true);
+
     countt++;
     nn--;
 }
 
 void ListWidget::RemoveTailButtonClicked()
 {
-    if (nn == 1)
+    if (nn == 1) {
+        QMessageBox::warning(this, tr("Ошибка"), tr("Минимальная длинна листа 1!"));//сообщение об ошибке
         return;
+    }
+
+   RemoveTailButton->setEnabled(false);
 
     if (isFront) {
         NodeForList* buff = listNodeForList.at(nn-1);
@@ -987,6 +1015,8 @@ void ListWidget::RemoveTailButtonClicked()
         timeChange(1000);
         RemoveEdge(nn, true);
     }
+
+    RemoveTailButton->setEnabled(true);
 
     scene()->removeItem(listNodeForList.at(nn-1));
     listNodeForList.pop_back();

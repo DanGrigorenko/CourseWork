@@ -1448,6 +1448,8 @@ moc_listwidget.cpp: ../untitled/listwidget.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qlineedit.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextformat.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/QStack \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qstack.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QPushButton \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -1462,6 +1464,11 @@ moc_listwidget.cpp: ../untitled/listwidget.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qvalidator.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qregularexpression.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qlocale.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/QPropertyAnimation \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qpropertyanimation.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
 		moc_predefs.h \
 		../../../../QT/6.1.3/gcc_64/libexec/moc
 	/home/cigan/QT/6.1.3/gcc_64/libexec/moc $(DEFINES) --include /home/cigan/Workspace/QT2/проект/build-untitled-Desktop_Qt_6_1_3_GCC_64bit-Debug/moc_predefs.h -I/home/cigan/QT/6.1.3/gcc_64/mkspecs/linux-g++ -I/home/cigan/Workspace/QT2/проект/untitled -I/home/cigan/QT/6.1.3/gcc_64/include -I/home/cigan/QT/6.1.3/gcc_64/include/QtWidgets -I/home/cigan/QT/6.1.3/gcc_64/include/QtGui -I/home/cigan/QT/6.1.3/gcc_64/include/QtSql -I/home/cigan/QT/6.1.3/gcc_64/include/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../untitled/listwidget.h -o moc_listwidget.cpp
@@ -3366,6 +3373,8 @@ listwidget.o: ../untitled/listwidget.cpp ../untitled/listwidget.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qlineedit.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextformat.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/QStack \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qstack.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QPushButton \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -3380,6 +3389,11 @@ listwidget.o: ../untitled/listwidget.cpp ../untitled/listwidget.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qvalidator.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qregularexpression.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qlocale.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/QPropertyAnimation \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qpropertyanimation.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
 		../untitled/edgeforlist.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsItem \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicsitem.h \
@@ -3396,7 +3410,9 @@ listwidget.o: ../untitled/listwidget.cpp ../untitled/listwidget.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qtimer.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qbasictimer.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/QEventLoop \
-		../../../../QT/6.1.3/gcc_64/include/QtCore/qeventloop.h
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qeventloop.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsColorizeEffect \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o listwidget.o ../untitled/listwidget.cpp
 
 listwindow.o: ../untitled/listwindow.cpp ../untitled/listwindow.h \
@@ -3540,9 +3556,10 @@ listwindow.o: ../untitled/listwindow.cpp ../untitled/listwindow.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qinputmethod.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qlocale.h \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QMenu \
+		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qmenu.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QMenuBar \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qmenubar.h \
-		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qmenu.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QStatusBar \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qstatusbar.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QToolBar \
@@ -3966,6 +3983,8 @@ menuwindow.o: ../untitled/menuwindow.cpp ../untitled/menuwindow.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextformat.h \
 		../untitled/listwidget.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/QStack \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qstack.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QSpinBox \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qspinbox.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
@@ -4281,6 +4300,8 @@ nodeforlist.o: ../untitled/nodeforlist.cpp ../untitled/nodeforlist.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qlineedit.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextcursor.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qtextformat.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/QStack \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qstack.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QPushButton \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -4295,6 +4316,11 @@ nodeforlist.o: ../untitled/nodeforlist.cpp ../untitled/nodeforlist.h \
 		../../../../QT/6.1.3/gcc_64/include/QtGui/qvalidator.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qregularexpression.h \
 		../../../../QT/6.1.3/gcc_64/include/QtCore/qlocale.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/QPropertyAnimation \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qpropertyanimation.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qvariantanimation.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qabstractanimation.h \
+		../../../../QT/6.1.3/gcc_64/include/QtCore/qeasingcurve.h \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsScene \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/QGraphicsSceneMouseEvent \
 		../../../../QT/6.1.3/gcc_64/include/QtWidgets/qgraphicssceneevent.h \

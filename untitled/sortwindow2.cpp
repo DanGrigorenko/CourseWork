@@ -113,6 +113,8 @@ void SortWindow2::on_pushButton_11_clicked()
     if (bubble == true) {
         count = 0;
         ui->label_10->setText("Кол-во перестоновок: 0");
+        isWork = true;
+        Enabled();
         for (int i = 0; i < n-1; i++) {
             for (int j = 0; j < n-i-1; j++) {
                 if (buttonList[j]->text().toInt() > buttonList[j+1]->text().toInt()) {
@@ -142,9 +144,13 @@ void SortWindow2::on_pushButton_11_clicked()
                 }
             }
         }
+        isWork = false;
+        Enabled();
     }
     else if (selection == true) {
         count = 0;
+        isWork = true;
+        Enabled();
         ui->label_10->setText("Кол-во перестоновок: 0");
         for (int startIndex = 0; startIndex < n - 1; ++startIndex) {
             int smallINdex = startIndex;
@@ -191,10 +197,14 @@ void SortWindow2::on_pushButton_11_clicked()
                 countReangements(count);
             }
         }
+        isWork = false;
+        Enabled();
     }
     else if (insertion == true) {
         count = 0;
         ui->label_10->setText("Кол-во перестоновок: 0");
+        isWork = true;
+        Enabled();
         for(int i=1;i<n;i++) {
             buttonList[i]->setStyleSheet("background: red");
             timeChange(500);
@@ -216,12 +226,17 @@ void SortWindow2::on_pushButton_11_clicked()
             }
             clear();
         }
+        isWork = false;
+        Enabled();
     }
     else if (shaker == true) {
         count = 0;
         ui->label_10->setText("Кол-во перестоновок: 0");
+        isWork = true;
+        Enabled();
         int leftMark = 1;
         int rightMark = n - 1;
+
         while (leftMark <= rightMark)
         {
             for (int i = rightMark; i >= leftMark; i--) {
@@ -271,6 +286,8 @@ void SortWindow2::on_pushButton_11_clicked()
             rightMark--;
         }
     }
+    isWork = false;
+    Enabled();
 }
 
 void SortWindow2::on_pushButton_12_clicked()
@@ -442,15 +459,45 @@ void SortWindow2::on_action_3_triggered()
                                                      "<p>3.Нажмите кнопку сортировать.</p>"));
 //    QProcess process;
 //    process.start("libreoffice"); //вторым парметром можно передать аргументы
-//    process.waitForFinished();
+    //    process.waitForFinished();
+}
+
+void SortWindow2::Enabled()
+{
+    if (isWork == true) {
+        ui->pushButton_14->setEnabled(false);
+        ui->pushButton_15->setEnabled(false);
+        ui->pushButton_16->setEnabled(false);
+        ui->pushButton_17->setEnabled(false);
+        ui->pushButton_14->setEnabled(false);
+        ui->pushButton_19->setEnabled(false);
+        ui->pushButton_12->setEnabled(false);
+        ui->pushButton_11->setEnabled(false);
+    }
+    else {
+        ui->pushButton_14->setEnabled(true);
+        ui->pushButton_15->setEnabled(true);
+        ui->pushButton_16->setEnabled(true);
+        ui->pushButton_17->setEnabled(true);
+        ui->pushButton_14->setEnabled(true);
+        ui->pushButton_19->setEnabled(true);
+        ui->pushButton_12->setEnabled(true);
+        ui->pushButton_11->setEnabled(true);
+    }
 }
 
 void SortWindow2::on_action_triggered()
 {
-    auto w = new MenuWindow();//объект главного окна
-    w->setAttribute(Qt::WA_DeleteOnClose);
-    w->show();//показываем окно
-    deleteLater();//прячем предыдущее окно
+
+    if (isWork == true) {
+        QMessageBox::warning(this, tr("Ошибка"), tr("Дождитесь конца визуализации!"));//сообщение об ошибке
+    }
+    else {
+        auto w = new MenuWindow();//объект главного окна
+        w->setAttribute(Qt::WA_DeleteOnClose);
+        w->show();//показываем окно
+        deleteLater();//прячем предыдущее окно
+    }
 }
 
 

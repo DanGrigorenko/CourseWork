@@ -38,12 +38,13 @@ private slots:
     void on_actionINSERTION_triggered();
     void on_actionMERGE_triggered();
     void on_action_3_triggered();
+    void Enabled();
 
 private:
     Ui::SortWindow2 *ui;
     QLabel* buttonList[8];
     int n = 8, count;
-    bool bubble, selection, insertion, shaker;
+    bool bubble, selection, insertion, shaker, isWork = false;
     QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect();
     QGraphicsDropShadowEffect *effect2 = new QGraphicsDropShadowEffect();
     QGraphicsDropShadowEffect *effect3 = new QGraphicsDropShadowEffect();
