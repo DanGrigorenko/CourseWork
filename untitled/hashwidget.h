@@ -46,6 +46,8 @@ protected:
 private:
     int base, count = 1,num = -350,  step = 0, n = 9;
 
+    QLabel* arrIndex[9];
+
     QPushButton* InsertButton = new QPushButton();
     QPushButton* RemoveButton = new QPushButton();
     QPushButton* SearchButton = new QPushButton();
@@ -63,7 +65,7 @@ private:
     QLabel* RemoveLabel = new QLabel();
     QPushButton* RemoveGoButton = new QPushButton();
 
-    QLineEdit* InsertLE = new QLineEdit();
+    QSpinBox* InsertLE = new QSpinBox();
     QLabel*InsertLabel = new QLabel();
     QPushButton* InsertGoButton = new QPushButton();
 

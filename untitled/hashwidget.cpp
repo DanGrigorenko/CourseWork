@@ -76,15 +76,17 @@ HashWidget::HashWidget(QWidget *parent)
     MenuuButton->show();
 
     CreateLE->setMaximum(9);
+    InsertLE->setMinimum(1);
 
     HashNode();
-
 }
 
 void HashWidget::HashNode()
 {
     for (int i = 0; i < n; i++) {
         setNode.insert(i,new NodeForHash(this));
+        arrIndex[i] = new QLabel();
+        arrIndex[i]->setText("i="+QString::number(i));
     }
 
      for (auto &item : setNode) {
@@ -93,8 +95,14 @@ void HashWidget::HashNode()
 
     int num = -400;
     for (auto &item : setNode) {
-        item->setPos(num,-200);
+        item->setPos(num,-100);
         num+=100;
+    }
+
+    for (int i = 0; i < setNode.size(); i++) {
+        arrIndex[i]->setGeometry(setNode[i]->x()-15, setNode[i]->y()+20, 30, 30);
+        arrIndex[i]->setStyleSheet("background: #D7E1E9; color: red;");
+        scene()->addWidget(arrIndex[i]);
     }
     scene()->update();
 }
@@ -248,7 +256,7 @@ void HashWidget::InsertButtonClicked()
     RemoveLabel->hide();
     RemoveGoButton->hide();
 
-    InsertLE->setGeometry(-230, 160, 120, 30);
+    InsertLE->setGeometry(-230, 160, 60, 30);
     InsertLE->show();
 
     InsertLabel->setGeometry(-260,160,30,30);
@@ -256,7 +264,7 @@ void HashWidget::InsertButtonClicked()
     InsertLabel->setStyleSheet("background: #D7E1E9; font-size: 25px");
     InsertLabel->show();
 
-    InsertGoButton->setGeometry(-100, 160, 50, 30);
+    InsertGoButton->setGeometry(-160, 160, 50, 30);
     InsertGoButton->setText("Go");
     InsertGoButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
                              "QPushButton:hover{background: black; border:none; color: white;}");
@@ -292,6 +300,11 @@ void HashWidget::RemoveButtonClicked()
 
 void HashWidget::CreateGoButtonClicked()
 {
+    for (int i = 0; i < setNode.size(); i++) {
+        delete arrIndex[i];
+        scene()->update();
+    }
+
     for (auto &item : setNode) {
        scene()->removeItem(item);
     }
@@ -310,12 +323,20 @@ void HashWidget::SearchGoButtonClicked()
 void HashWidget::InsertGoButtonClicked()
 {
     int key =  InsertLE->text().toInt();
-
+    int counteItemHt = 0;
     for (int i = 0; i < setNode.size(); i++) {
         if (key == setNode.value(i)->m_node_id.toInt()) {
             QMessageBox::warning(this, tr("Ошибка"), tr("Ключ должен быть уникальным!"));//сообщение об ошибке
             return;
         }
+        else if (setNode.value(i)->isEmpty == false) {
+            counteItemHt++;
+        }
+    }
+
+    if (counteItemHt == setNode.size()) {
+        QMessageBox::warning(this, tr("Ошибка"), tr("Хеш таблица заполнена!"));//сообщение об ошибке
+        return;
     }
 
     step = 0;
