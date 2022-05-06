@@ -2,6 +2,7 @@
 #include "ui_listwindow.h"
 #include <menuwindow.h>
 #include <QComboBox>
+#include <QMessageBox>
 
 ListWindow::ListWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,5 +23,17 @@ void ListWindow::on_action_triggered()
     w->setAttribute(Qt::WA_DeleteOnClose);
     w->show();//показываем окно
     deleteLater();//прячем предыдущее окно
+}
+
+
+void ListWindow::on_action_4_triggered()
+{
+    QMessageBox::about(this, tr("Список"), tr("..."));
+}
+
+
+void ListWindow::on_action_5_triggered()
+{
+    QMessageBox::about(this, tr("Стек"), tr("..."));
 }
 

@@ -111,12 +111,12 @@ void GraphWidget::shuffle()
 void GraphWidget::Node_ON_Scene(int nn)
 {
     for (int i = 0; i < nn; i++) {
-    arr[i] = new Node(this);
+        arr[i] = new Node(this);
     }
 
     for (int i = 0; i < nn; i++) {
-    arr[i]->m_node_id = i+1;
-    scene()->addItem(arr[i]);
+        arr[i]->m_node_id = i+1;
+        scene()->addItem(arr[i]);
     }
 
     int num = -50;

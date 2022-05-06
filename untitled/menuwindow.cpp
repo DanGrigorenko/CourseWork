@@ -4,6 +4,7 @@
 #include <QTime>
 #include "graphwidget.h"
 #include "listwidget.h"
+#include "hashwidget.h"
 MenuWindow::MenuWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MenuWindow)
@@ -47,7 +48,9 @@ void MenuWindow::on_pushButton_3_clicked()
 
 void MenuWindow::on_pushButton_4_clicked()
 {
+    HashWidget *widget = new HashWidget;
     hashTable = new HashTableWindow(this);
+    hashTable->setCentralWidget(widget);
     hashTable->show();
     this->hide();
 }
