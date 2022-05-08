@@ -1,5 +1,4 @@
 #include "nodeforhash.h"
-#include "edgeforhash.h"
 #include "hashwidget.h"
 
 #include <QGraphicsScene>
@@ -15,16 +14,7 @@ NodeForHash::NodeForHash(HashWidget *HashWidget)
     setZValue(-1);
 }
 
-void NodeForHash::addEdge(EdgeForHash *edge)
-{
-    edgeList << edge;
-    edge->adjust();
-}
 
-QVector<EdgeForHash *> NodeForHash::edges() const
-{
-    return edgeList;
-}
 
 bool NodeForHash::advancePosition()
 {
@@ -90,8 +80,6 @@ QVariant NodeForHash::itemChange(GraphicsItemChange change, const QVariant &valu
 {
     switch (change) {
     case ItemPositionHasChanged:
-        for (EdgeForHash *edge : qAsConst(edgeList))
-            edge->adjust();
         break;
     default:
         break;

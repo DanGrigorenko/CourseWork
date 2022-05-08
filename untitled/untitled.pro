@@ -12,7 +12,6 @@ SOURCES += \
     admin.cpp \
     autentificationwindow.cpp \
     edge.cpp \
-    edgeforhash.cpp \
     edgeforlist.cpp \
     graphwidget.cpp \
     graphwindow.cpp \
@@ -32,7 +31,6 @@ HEADERS += \
     admin.h \
     autentificationwindow.h \
     edge.h \
-    edgeforhash.h \
     edgeforlist.h \
     graphwidget.h \
     graphwindow.h \

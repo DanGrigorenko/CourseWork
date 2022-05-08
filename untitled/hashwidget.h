@@ -13,16 +13,12 @@
 #include <QMap>
 
 class NodeForHash;
-class EdgeForHash;
 class HashWidget : public QGraphicsView
 {
     Q_OBJECT
 
 public:
     HashWidget(QWidget *parent = nullptr);
-    NodeForHash* arrKey[9];
-    NodeForHash* arrMeaning[9];
-    EdgeForHash* listEdgeForList[100000];
     QMap<int,NodeForHash*> setNode;
     int firstnode = 0;
 
@@ -39,6 +35,7 @@ public slots:
     void CreateGoButtonClicked();
     void SearchGoButtonClicked();
     void InsertGoButtonClicked();
+    void RemoveGoButtonClicked();
 
 protected:
     void scaleView(qreal scaleFactor);

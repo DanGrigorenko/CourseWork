@@ -5,7 +5,6 @@
 #include <QGraphicsItem>
 #include <QList>
 
-class EdgeForHash;
 class HashWidget;
 
 class NodeForHash : public QGraphicsItem
@@ -14,12 +13,8 @@ public:
     QString m_node_id = "";
     bool isChoosed = false;
     bool desired = false;
-    bool isEmpty = true;
     bool insertAndRemove = false;
     NodeForHash(HashWidget *graphWidget);
-
-    void addEdge(EdgeForHash *edge);
-    QList<EdgeForHash *> edges() const;
 
     enum { Type = UserType + 1 };
     int type() const override { return Type; }
@@ -37,7 +32,6 @@ protected:
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 
 private:
-    QList<EdgeForHash *> edgeList;
     QPointF newPos;
     HashWidget *graph;
     NodeForHash *arr;

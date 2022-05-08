@@ -1,5 +1,4 @@
 #include "hashwidget.h"
-#include "edgeforhash.h"
 #include "nodeforhash.h"
 #include <QMessageBox>
 #include <math.h>
@@ -17,9 +16,6 @@
 HashWidget::HashWidget(QWidget *parent)
     : QGraphicsView(parent)
  {
-    for (int i = 0; i < 100000; i++) {
-        listEdgeForList[i] = NULL;
-    }
     connect(CreatButton,SIGNAL(clicked()),this, SLOT(CreateButtonClicked()));
     connect(InsertButton,SIGNAL(clicked()),this, SLOT(InsertButtonClicked()));
     connect(SearchButton,SIGNAL(clicked()),this, SLOT(SearchButtonClicked()));
@@ -28,6 +24,7 @@ HashWidget::HashWidget(QWidget *parent)
     connect(CreateGoButton,SIGNAL(clicked()),this, SLOT(CreateGoButtonClicked()));
     connect(SearchGoButton,SIGNAL(clicked()),this, SLOT(SearchGoButtonClicked()));
     connect(InsertGoButton,SIGNAL(clicked()),this, SLOT(InsertGoButtonClicked()));
+    connect(RemoveGoButton,SIGNAL(clicked()),this, SLOT(RemoveGoButtonClicked()));
 
     scale(qreal(0.8), qreal(0.8));
 
@@ -77,6 +74,8 @@ HashWidget::HashWidget(QWidget *parent)
 
     CreateLE->setMaximum(9);
     InsertLE->setMinimum(1);
+    SearchLE->setMinimum(1);
+    RemoveLE->setMinimum(1);
 
     HashNode();
 }
@@ -317,7 +316,27 @@ void HashWidget::CreateGoButtonClicked()
 
 void HashWidget::SearchGoButtonClicked()
 {
+    int key =  SearchLE->text().toInt();
+    step = 0; int i = base = key%setNode.size();
 
+    while (true) {
+
+      if (step == setNode.size()) {
+          QMessageBox::warning(this, tr("Ошибка"), tr("Значение не найдено!"));//сообщение об ошибке
+          break;
+      }
+      else if (setNode.value(i)->m_node_id.toInt() == key){
+          setNode.value(i)->desired = true;
+          setNode.value(i)->update();
+          timeChange(3000);
+          setNode.value(i)->desired = false;
+          setNode.value(i)->update();
+          break;
+      }
+
+      else {step++;}
+      i = (base+step*1)%setNode.size();
+    }
 }
 
 void HashWidget::InsertGoButtonClicked()
@@ -329,7 +348,7 @@ void HashWidget::InsertGoButtonClicked()
             QMessageBox::warning(this, tr("Ошибка"), tr("Ключ должен быть уникальным!"));//сообщение об ошибке
             return;
         }
-        else if (setNode.value(i)->isEmpty == false) {
+        else if (setNode.value(i)->m_node_id != "") {
             counteItemHt++;
         }
     }
@@ -341,15 +360,45 @@ void HashWidget::InsertGoButtonClicked()
 
     step = 0;
     int i = base = key%setNode.size();
-    while (!setNode.value(i)->isEmpty) {
+    while (setNode.value(i)->m_node_id != "" && setNode.value(i)->m_node_id != "del") {
         step++;
-         i = (base+step*1)%setNode.size();
+        i = (base+step*1)%setNode.size();
+        setNode.value(i)->desired = true;
+        setNode.value(i)->update();
+        timeChange(500);
+        setNode.value(i)->desired = false;
+        setNode.value(i)->update();
     }
-
     setNode.value(i)->m_node_id = InsertLE->text();
-    setNode.value(i)->isEmpty = false;
+    setNode.value(i)->desired = true;
     setNode.value(i)->update();
+    timeChange(500);
+    setNode.value(i)->desired = false;
+    setNode.value(i)->update();
+
     scene()->update();
+}
+
+void HashWidget::RemoveGoButtonClicked()
+{
+    int key =  RemoveLE->text().toInt();
+    int i = base = key%setNode.size();
+
+    while (true) {
+
+        if (setNode[i]->m_node_id == "") {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Значение не найдено!"));//сообщение об ошибке
+            break;
+        }
+
+        else if (setNode[i]->m_node_id.toInt() == key) {
+            setNode[i]->m_node_id = "del";
+            setNode.value(i)->update();
+            break;
+        }
+        else {step++;}
+        i = (base+step*1)%setNode.size();
+    }
 }
 
 
