@@ -316,31 +316,41 @@ void HashWidget::CreateGoButtonClicked()
 
 void HashWidget::SearchGoButtonClicked()
 {
+    for (int i = 0; i < setNode.size(); i++) {
+        setNode.value(i)->desired = false;
+        setNode.value(i)->update();
+    }
+
     int key =  SearchLE->text().toInt();
     step = 0; int i = base = key%setNode.size();
 
     while (true) {
+        setNode.value(i)->desired = true;
+        setNode.value(i)->update();
+        timeChange(500);
 
-      if (step == setNode.size()) {
+        if (setNode.value(i)->m_node_id == "") {
           QMessageBox::warning(this, tr("Ошибка"), tr("Значение не найдено!"));//сообщение об ошибке
           break;
-      }
-      else if (setNode.value(i)->m_node_id.toInt() == key){
-          setNode.value(i)->desired = true;
-          setNode.value(i)->update();
-          timeChange(3000);
-          setNode.value(i)->desired = false;
-          setNode.value(i)->update();
-          break;
-      }
+        }
+        else if (setNode.value(i)->m_node_id.toInt() == key){
+            break;
+        }
 
-      else {step++;}
-      i = (base+step*1)%setNode.size();
+        else {
+            step++;
+        }
+        i = (base+step*1)%setNode.size();
     }
 }
 
 void HashWidget::InsertGoButtonClicked()
 {
+    for (int i = 0; i < setNode.size(); i++) {
+        setNode.value(i)->desired = false;
+        setNode.value(i)->update();
+    }
+
     int key =  InsertLE->text().toInt();
     int counteItemHt = 0;
     for (int i = 0; i < setNode.size(); i++) {
@@ -348,43 +358,47 @@ void HashWidget::InsertGoButtonClicked()
             QMessageBox::warning(this, tr("Ошибка"), tr("Ключ должен быть уникальным!"));//сообщение об ошибке
             return;
         }
-        else if (setNode.value(i)->m_node_id != "") {
+        else if (setNode.value(i)->m_node_id != "" && setNode.value(i)->m_node_id != "del") {
             counteItemHt++;
         }
     }
 
-    if (counteItemHt == setNode.size()) {
-        QMessageBox::warning(this, tr("Ошибка"), tr("Хеш таблица заполнена!"));//сообщение об ошибке
+    if (counteItemHt == setNode.size()-1) {
+        QMessageBox::warning(this, tr("Ошибка"), tr("К сожалению, хеш-таблица HT почти заполнена (слишком высокий коэффициент загрузки)!"));//сообщение об ошибке
         return;
     }
 
     step = 0;
     int i = base = key%setNode.size();
     while (setNode.value(i)->m_node_id != "" && setNode.value(i)->m_node_id != "del") {
-        step++;
         i = (base+step*1)%setNode.size();
         setNode.value(i)->desired = true;
         setNode.value(i)->update();
         timeChange(500);
-        setNode.value(i)->desired = false;
-        setNode.value(i)->update();
+        step++;
     }
     setNode.value(i)->m_node_id = InsertLE->text();
     setNode.value(i)->desired = true;
     setNode.value(i)->update();
     timeChange(500);
-    setNode.value(i)->desired = false;
-    setNode.value(i)->update();
 
     scene()->update();
 }
 
 void HashWidget::RemoveGoButtonClicked()
 {
+    for (int i = 0; i < setNode.size(); i++) {
+        setNode.value(i)->desired = false;
+        setNode.value(i)->update();
+    }
+
     int key =  RemoveLE->text().toInt();
     int i = base = key%setNode.size();
-
+    step = 0;
     while (true) {
+        setNode.value(i)->desired = true;
+        setNode.value(i)->update();
+        timeChange(500);
 
         if (setNode[i]->m_node_id == "") {
             QMessageBox::warning(this, tr("Ошибка"), tr("Значение не найдено!"));//сообщение об ошибке
