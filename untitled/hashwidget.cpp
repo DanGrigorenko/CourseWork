@@ -25,6 +25,8 @@ HashWidget::HashWidget(QWidget *parent)
     connect(SearchGoButton,SIGNAL(clicked()),this, SLOT(SearchGoButtonClicked()));
     connect(InsertGoButton,SIGNAL(clicked()),this, SLOT(InsertGoButtonClicked()));
     connect(RemoveGoButton,SIGNAL(clicked()),this, SLOT(RemoveGoButtonClicked()));
+    connect(LinerProbing,SIGNAL(clicked()),this, SLOT(LinerProbingClicked()));
+    connect(QUADRATICProbing,SIGNAL(clicked()),this, SLOT(QUADRATICProbingClicked()));
 
     scale(qreal(0.8), qreal(0.8));
 
@@ -56,7 +58,6 @@ HashWidget::HashWidget(QWidget *parent)
     scene->addWidget(InsertButton);
     scene->addWidget(RemoveButton);
 
-
     ShowMenuItem();
     HideButtons();
 
@@ -69,14 +70,34 @@ HashWidget::HashWidget(QWidget *parent)
     MenuuButton->setGeometry(-480, 100, 50, 120);
     MenuuButton->setText(">");
     MenuuButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: center;}"
-                             "QPushButton:hover{background: black; border:none; color: white;}");
+                             "QPushButton:hover{background: lightblue; border:none; color: white;}");
     MenuuButton->show();
+
+    LinerProbing->setGeometry(-500, -320, 495, 50);
+    LinerProbing->setText("Линейное зондирование\t\t\t\t");
+    LinerProbing->setStyleSheet("QPushButton{background: lightblue; border: 0px solid black; color: black; text-align: right;}"
+                             "QPushButton:hover{background: lightblue; border:none; color: white;}");
+    LinerProbing->show();
+
+    QUADRATICProbing->setGeometry(-5, -320, 513, 50);
+    QUADRATICProbing->setText("\t\t\t\tКвадратичное зондирование");
+    QUADRATICProbing->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
+                             "QPushButton:hover{background: lightblue; border:none; color: white;}");
+    QUADRATICProbing->show();
+
+    scene->addWidget(LinerProbing);
+    scene->addWidget(QUADRATICProbing);
 
     CreateLE->setMaximum(9);
     InsertLE->setMinimum(1);
     SearchLE->setMinimum(1);
     RemoveLE->setMinimum(1);
+    CreateLE->setMinimum((3));
 
+    liner = true;
+
+    srand(time(NULL));
+    n = 3 + rand()%(9-3+1);
     HashNode();
 }
 
@@ -111,25 +132,25 @@ void HashWidget::ShowMenuItem()
     CreatButton->setGeometry(-415, 100, 150, 30);
     CreatButton->setText("Создать");
     CreatButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                                 "QPushButton:hover{background: black; border:none; color: white;}");
+                                 "QPushButton:hover{background: lightblue; border:none; color: white;}");
     CreatButton->show();
 
     SearchButton->setGeometry(-415, 130, 150, 30);
     SearchButton->setText("Поиск");
     SearchButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                        "QPushButton:hover{background: black; border:none; color: white;}");
+                        "QPushButton:hover{background: lightblue; border:none; color: white;}");
     SearchButton->show();
 
     InsertButton->setGeometry(-415, 160, 150, 30);
     InsertButton->setText("Вставка");
     InsertButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                        "QPushButton:hover{background: black; border:none; color: white;}");
+                        "QPushButton:hover{background: lightblue; border:none; color: white;}");
     InsertButton->show();
 
     RemoveButton->setGeometry(-415, 190, 150, 30);
     RemoveButton->setText("Удаление");
     RemoveButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                        "QPushButton:hover{background: black; border:none; color: white;}");
+                        "QPushButton:hover{background: lightblue; border:none; color: white;}");
     RemoveButton->show();
 
 }
@@ -212,7 +233,7 @@ void HashWidget::CreateButtonClicked()
     CreateGoButton->setGeometry(110, 100, 50, 30);
     CreateGoButton->setText("Go");
     CreateGoButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                             "QPushButton:hover{background: black; border:none; color: white;}");
+                             "QPushButton:hover{background: lightblue; border:none; color: white;}");
     CreateGoButton->show();
 }
 
@@ -239,7 +260,7 @@ void HashWidget::SearchButtonClicked()
     SearchGoButton->setGeometry(-160, 130, 50, 30);
     SearchGoButton->setText("Go");
     SearchGoButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                             "QPushButton:hover{background: black; border:none; color: white;}");
+                             "QPushButton:hover{background: lightblue; border:none; color: white;}");
     SearchGoButton->show();
 }
 
@@ -266,7 +287,7 @@ void HashWidget::InsertButtonClicked()
     InsertGoButton->setGeometry(-160, 160, 50, 30);
     InsertGoButton->setText("Go");
     InsertGoButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                             "QPushButton:hover{background: black; border:none; color: white;}");
+                             "QPushButton:hover{background: lightblue; border:none; color: white;}");
     InsertGoButton->show();
 }
 
@@ -293,7 +314,7 @@ void HashWidget::RemoveButtonClicked()
     RemoveGoButton->setGeometry(-160, 190, 50, 30);
     RemoveGoButton->setText("Go");
     RemoveGoButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
-                             "QPushButton:hover{background: black; border:none; color: white;}");
+                             "QPushButton:hover{background: lightblue; border:none; color: white;}");
     RemoveGoButton->show();
 }
 
@@ -316,6 +337,9 @@ void HashWidget::CreateGoButtonClicked()
 
 void HashWidget::SearchGoButtonClicked()
 {
+    SearchGoButton->setEnabled(false);
+    EnabledBtn(false);
+
     for (int i = 0; i < setNode.size(); i++) {
         setNode.value(i)->desired = false;
         setNode.value(i)->update();
@@ -340,12 +364,20 @@ void HashWidget::SearchGoButtonClicked()
         else {
             step++;
         }
-        i = (base+step*1)%setNode.size();
+        if (liner)
+            i = (base+step*1)%setNode.size();
+        else
+            i = (base+step*step)%setNode.size();
     }
+     SearchGoButton->setEnabled(true);
+     EnabledBtn(true);
 }
 
 void HashWidget::InsertGoButtonClicked()
 {
+    InsertGoButton->setEnabled(false);
+    EnabledBtn(false);
+
     for (int i = 0; i < setNode.size(); i++) {
         setNode.value(i)->desired = false;
         setNode.value(i)->update();
@@ -356,6 +388,8 @@ void HashWidget::InsertGoButtonClicked()
     for (int i = 0; i < setNode.size(); i++) {
         if (key == setNode.value(i)->m_node_id.toInt()) {
             QMessageBox::warning(this, tr("Ошибка"), tr("Ключ должен быть уникальным!"));//сообщение об ошибке
+            InsertGoButton->setEnabled(true);
+            EnabledBtn(true);
             return;
         }
         else if (setNode.value(i)->m_node_id != "" && setNode.value(i)->m_node_id != "del") {
@@ -365,13 +399,18 @@ void HashWidget::InsertGoButtonClicked()
 
     if (counteItemHt == setNode.size()-1) {
         QMessageBox::warning(this, tr("Ошибка"), tr("К сожалению, хеш-таблица HT почти заполнена (слишком высокий коэффициент загрузки)!"));//сообщение об ошибке
+        InsertGoButton->setEnabled(true);
+        EnabledBtn(true);
         return;
     }
 
     step = 0;
     int i = base = key%setNode.size();
     while (setNode.value(i)->m_node_id != "" && setNode.value(i)->m_node_id != "del") {
-        i = (base+step*1)%setNode.size();
+        if (liner)
+            i = (base+step*1)%setNode.size();
+        else
+            i = (base+step*step)%setNode.size();
         setNode.value(i)->desired = true;
         setNode.value(i)->update();
         timeChange(500);
@@ -382,11 +421,17 @@ void HashWidget::InsertGoButtonClicked()
     setNode.value(i)->update();
     timeChange(500);
 
+    InsertGoButton->setEnabled(true);
+    EnabledBtn(true);
+
     scene()->update();
 }
 
 void HashWidget::RemoveGoButtonClicked()
 {
+    RemoveGoButton->setEnabled(false);
+    EnabledBtn(false);
+
     for (int i = 0; i < setNode.size(); i++) {
         setNode.value(i)->desired = false;
         setNode.value(i)->update();
@@ -400,19 +445,69 @@ void HashWidget::RemoveGoButtonClicked()
         setNode.value(i)->update();
         timeChange(500);
 
-        if (setNode[i]->m_node_id == "") {
+        if (setNode[i]->m_node_id == "" || setNode.size()-1 == step) {
             QMessageBox::warning(this, tr("Ошибка"), tr("Значение не найдено!"));//сообщение об ошибке
             break;
         }
-
         else if (setNode[i]->m_node_id.toInt() == key) {
-            setNode[i]->m_node_id = "del";
+            setNode.value(i)->m_node_id = "del";
             setNode.value(i)->update();
             break;
         }
-        else {step++;}
-        i = (base+step*1)%setNode.size();
+        else {
+            step++;
+        }
+        if (liner)
+            i = (base+step*1)%setNode.size();
+        else
+            i = (base+step*step)%setNode.size();
     }
+
+    RemoveGoButton->setEnabled(true);
+    EnabledBtn(true);
+}
+
+void HashWidget::LinerProbingClicked()
+{
+    for (int i = 0; i < setNode.size(); i++) {
+        setNode.value(i)->m_node_id = "";
+        setNode.value(i)->desired = false;
+        setNode.value(i)->update();
+    }
+
+    liner = true;
+    quadratic = false;
+    LinerProbing->setStyleSheet("QPushButton{background: #ADD8E6; border: 0px solid black; color: black; text-align: right;}"
+                                 "QPushButton:hover{background: lightblue; border:none; color: white;}");
+    QUADRATICProbing->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
+                                 "QPushButton:hover{background: lightblue; border:none; color: white;}");
+}
+
+void HashWidget::QUADRATICProbingClicked()
+{
+    for (int i = 0; i < setNode.size(); i++) {
+        setNode.value(i)->m_node_id = "";
+        setNode.value(i)->desired = false;
+        setNode.value(i)->update();
+    }
+
+    liner = false;
+    quadratic = true;
+    QUADRATICProbing->setStyleSheet("QPushButton{background: #ADD8E6; border: 0px solid black; color: black; text-align: left;}"
+                                 "QPushButton:hover{background: lightblue; border:none; color: white;}");
+    LinerProbing->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: right;}"
+                                "QPushButton:hover{background: lightblue; border:none; color: white;}");
+}
+
+void HashWidget::EnabledBtn(bool flag)
+{
+    LinerProbing->setEnabled(flag);
+    QUADRATICProbing->setEnabled(flag);
+    MenuuButton->setEnabled(flag);
+    CreatButton->setEnabled(flag);
+    SearchButton->setEnabled(flag);
+    InsertButton->setEnabled(flag);
+    RemoveButton->setEnabled(flag);
 }
 
 

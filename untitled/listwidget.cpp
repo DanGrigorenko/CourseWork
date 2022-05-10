@@ -74,8 +74,8 @@ ListWidget::ListWidget(QWidget *parent)
 
     LinkListButton->setGeometry(-500, -320, 495, 50);
     LinkListButton->setText("Cписок       ");
-    LinkListButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: right;}"
-                             "QPushButton:hover{background: black; border:none; color: white;}");
+    LinkListButton->setStyleSheet("QPushButton{background: black; border: 0px solid black; color: white; text-align: right;}"
+                                 "QPushButton:hover{background: black; border:none; color: white;}");
     LinkListButton->show();
 
     StackButton->setGeometry(-5, -320, 513, 50);
@@ -235,6 +235,10 @@ void ListWidget::HideButtons()
 
 void ListWidget::LinkListButtonClicked()
 {
+    LinkListButton->setStyleSheet("QPushButton{background: black; border: 0px solid black; color: white; text-align: right;}"
+                                 "QPushButton:hover{background: black; border:none; color: white;}");
+    StackButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: left;}"
+                                "QPushButton:hover{background: black; border:none; color: white;}");
     HideButtons();
     count = 1;
     isStack = false;
@@ -258,6 +262,11 @@ void ListWidget::LinkListButtonClicked()
 
 void ListWidget::StackButtonClicked()
 {
+    LinkListButton->setStyleSheet("QPushButton{background: #F1F2F2; border: 0px solid black; color: black; text-align: right;}"
+                                 "QPushButton:hover{background: black; border:none; color: white;}");
+    StackButton->setStyleSheet("QPushButton{background: black; border: 0px solid black; color: white; text-align: left;}"
+                                "QPushButton:hover{background: black; border:none; color: white;}");
+
     HideButtons();
      count = 1;
     isStack = true;
@@ -778,6 +787,15 @@ void ListWidget::CreateGoButtonClicked()
 
 void ListWidget::SearchGoButtonClicked()
 {
+    SearchGoButton->setEnabled(false);
+    MenuuButton->setEnabled(false);
+    CreatButton->setEnabled(false);
+    SearchButton->setEnabled(false);
+    InsertButton->setEnabled(false);
+    RemoveButton->setEnabled(false);
+    StackButton->setEnabled(false);
+    LinkListButton->setEnabled(false);
+
     for (int i = 0; i < nn; i++) {
         listNodeForList.at(i)->desired = false;
         listNodeForList.at(i)->isChoosed = false;
@@ -817,6 +835,15 @@ void ListWidget::SearchGoButtonClicked()
         listNodeForList.at(i)->isChoosed = false;
         listNodeForList.at(i)->update();
     }
+
+    SearchGoButton->setEnabled(true);
+    MenuuButton->setEnabled(true);
+    CreatButton->setEnabled(true);
+    SearchButton->setEnabled(true);
+    InsertButton->setEnabled(true);
+    RemoveButton->setEnabled(true);
+    StackButton->setEnabled(true);
+    LinkListButton->setEnabled(true);
 }
 
 void ListWidget::InsertHeadButtonClicked()

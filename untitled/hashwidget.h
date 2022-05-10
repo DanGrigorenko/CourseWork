@@ -36,12 +36,16 @@ public slots:
     void SearchGoButtonClicked();
     void InsertGoButtonClicked();
     void RemoveGoButtonClicked();
+    void LinerProbingClicked();
+    void QUADRATICProbingClicked();
+    void EnabledBtn(bool flag);
 
 protected:
     void scaleView(qreal scaleFactor);
 
 private:
     int base, count = 1,num = -350,  step = 0, n = 9;
+    bool liner = false, quadratic = false;
 
     QLabel* arrIndex[9];
 
@@ -67,5 +71,8 @@ private:
     QPushButton* InsertGoButton = new QPushButton();
 
     QPushButton* MenuuButton = new QPushButton();
+
+    QPushButton* LinerProbing = new QPushButton();
+    QPushButton*  QUADRATICProbing = new QPushButton();
 };
 #endif // HASHWIDGET_H
